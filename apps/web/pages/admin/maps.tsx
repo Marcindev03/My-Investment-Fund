@@ -1,5 +1,5 @@
 import MapExample from "components/Maps/MapExample.js";
-import Admin from "layouts/Admin.js";
+import Admin from "layouts/Admin";
 
 export default function Maps() {
   return (

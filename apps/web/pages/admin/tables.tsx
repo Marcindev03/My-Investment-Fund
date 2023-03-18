@@ -1,5 +1,5 @@
 import CardTable from "components/Cards/CardTable.js";
-import Admin from "layouts/Admin.js";
+import Admin from "layouts/Admin";
 
 export default function Tables() {
   return (
