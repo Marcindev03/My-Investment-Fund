@@ -1,6 +1,5 @@
 import Link from "next/link";
-
-import Auth from "layouts/Auth.js";
+import Auth from "layouts/Auth";
 
 export default function Login() {
   return (
