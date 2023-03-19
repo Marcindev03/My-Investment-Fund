@@ -1,3 +1,5 @@
+import { SidebarItem } from "types";
+
 export const NOTUS_MESSAGE = `
 
 =========================================================
@@ -17,3 +19,26 @@ export const NOTUS_MESSAGE = `
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 `;
+
+export const SHARED_SIDEBAR_ITEMS: SidebarItem[] = [
+  {
+    href: "/dashboard",
+    text: "Dashboard",
+    fontAwesomeIcon: "fas fa-tv",
+  },
+  {
+    href: "/requests",
+    text: "Requests",
+    fontAwesomeIcon: "fas fa-table",
+  },
+];
+
+// export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [];
+
+export const USER_SIDEBAR_ITEMS: SidebarItem[] = [
+  {
+    href: "/profile",
+    text: "Profile",
+    fontAwesomeIcon: "fas fa-user",
+  },
+];
