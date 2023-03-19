@@ -1,4 +1,4 @@
-import CardTable from "components/Cards/CardTable.js";
+import CardTable from "components/Cards/CardTable";
 import Admin from "layouts/Admin";
 
 export default function Tables() {

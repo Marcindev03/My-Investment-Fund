@@ -1,13 +1,16 @@
-import React from "react";
+import { FC } from "react";
 
-export default function FooterSmall(props) {
+type FooterSmallProps = {
+  absolute?: boolean;
+};
+
+const FooterSmall: FC<FooterSmallProps> = ({ absolute }) => {
   return (
     <>
       <footer
         className={
-          (props.absolute
-            ? "absolute w-full bottom-0 bg-blueGray-800"
-            : "relative") + " pb-6"
+          (absolute ? "absolute w-full bottom-0 bg-blueGray-800" : "relative") +
+          " pb-6"
         }
       >
         <div className="container mx-auto px-4">
@@ -65,4 +68,6 @@ export default function FooterSmall(props) {
       </footer>
     </>
   );
-}
+};
+
+export default FooterSmall;

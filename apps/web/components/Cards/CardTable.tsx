@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-
-// components
-
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
+import { FC } from "react";
 
-export default function CardTable({ color }) {
+type CardTableProps = {
+  color?: "light" | "dark";
+};
+
+const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
   return (
     <>
       <div
@@ -418,12 +418,6 @@ export default function CardTable({ color }) {
       </div>
     </>
   );
-}
-
-CardTable.defaultProps = {
-  color: "light",
 };
 
-CardTable.propTypes = {
-  color: PropTypes.oneOf(["light", "dark"]),
-};
+export default CardTable;
