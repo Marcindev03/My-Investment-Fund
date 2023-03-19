@@ -22,7 +22,7 @@ export default function Sidebar() {
           </button>
           {/* Brand */}
           <Link
-            href="/#pablo"
+            href="/"
             className="md:block text-left md:pb-2
             text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm
             uppercase font-bold p-4 px-0"
@@ -50,7 +50,7 @@ export default function Sidebar() {
               <div className="flex flex-wrap">
                 <div className="w-6/12">
                   <Link
-                    href="/#pablo"
+                    href="/"
                     className="md:block text-left md:pb-2
                     text-blueGray-600 mr-0 inline-block whitespace-nowrap
                     text-sm uppercase font-bold p-4 px-0"
@@ -91,7 +91,7 @@ export default function Sidebar() {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
                 <Link
-                  href="/admin/dashboard#pablo"
+                  href="/admin/dashboard"
                   className={
                     "text-xs uppercase py-3 font-bold block " +
                     (router.pathname.indexOf("/admin/dashboard") !== -1
@@ -113,7 +113,7 @@ export default function Sidebar() {
 
               <li className="items-center">
                 <Link
-                  href="/admin/settings#pablo"
+                  href="/admin/settings"
                   className={
                     "text-xs uppercase py-3 font-bold block " +
                     (router.pathname.indexOf("/admin/settings") !== -1
@@ -135,7 +135,7 @@ export default function Sidebar() {
 
               <li className="items-center">
                 <Link
-                  href="/admin/tables#pablo"
+                  href="/admin/tables"
                   className={
                     "text-xs uppercase py-3 font-bold block " +
                     (router.pathname.indexOf("/admin/tables") !== -1
@@ -157,7 +157,7 @@ export default function Sidebar() {
 
               <li className="items-center">
                 <Link
-                  href="/admin/maps#pablo"
+                  href="/admin/maps"
                   className={
                     "text-xs uppercase py-3 font-bold block " +
                     (router.pathname.indexOf("/admin/maps") !== -1
@@ -189,7 +189,7 @@ export default function Sidebar() {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <Link
-                  href="/auth/login#pablo"
+                  href="/auth/login"
                   className="text-blueGray-700
                   hover:text-blueGray-500 text-xs uppercase py-3 font-bold
                   block"
@@ -201,7 +201,7 @@ export default function Sidebar() {
 
               <li className="items-center">
                 <Link
-                  href="/auth/register#pablo"
+                  href="/auth/register"
                   className="text-blueGray-700
                   hover:text-blueGray-500 text-xs uppercase py-3 font-bold
                   block"
@@ -223,7 +223,7 @@ export default function Sidebar() {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <Link
-                  href="/landing#pablo"
+                  href="/landing"
                   className="text-blueGray-700
                   hover:text-blueGray-500 text-xs uppercase py-3 font-bold
                   block"
@@ -235,7 +235,7 @@ export default function Sidebar() {
 
               <li className="items-center">
                 <Link
-                  href="/profile#pablo"
+                  href="/profile"
                   className="text-blueGray-700
                   hover:text-blueGray-500 text-xs uppercase py-3 font-bold
                   block"
