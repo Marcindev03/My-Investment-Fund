@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
+import Sidebar from "components/Sidebar/Sidebar";
 import HeaderStats from "components/Headers/HeaderStats.js";
 import FooterAdmin from "components/Footers/FooterAdmin.js";
 
@@ -11,7 +11,7 @@ type AdminProps = {
 const Admin: FC<AdminProps> = ({ children }) => (
   <>
     <Sidebar />
-    <div className="relative md:ml-64 bg-blueGray-100">
+    <div className="relative md:ml-64 bg-blueGray-100 min-h-screen">
       <AdminNavbar />
       {/* Header */}
       <HeaderStats />
