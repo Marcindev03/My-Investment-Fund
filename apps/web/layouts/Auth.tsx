@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import Navbar from "components/Navbars/AuthNavbar.js";
-import FooterSmall from "components/Footers/FooterSmall.js";
+import FooterSmall from "components/Footers/FooterSmall";
 
 type AuthProps = {
   children: ReactNode;
@@ -8,7 +8,7 @@ type AuthProps = {
 
 const Auth: FC<AuthProps> = ({ children }) => (
   <>
-    <Navbar transparent />
+    <Navbar />
     <main>
       <section className="relative w-full h-full py-40 min-h-screen">
         <div
