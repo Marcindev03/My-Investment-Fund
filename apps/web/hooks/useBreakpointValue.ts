@@ -51,7 +51,5 @@ export const useBreakpointValue = (args: UseBreakpointValueArguments) => {
     };
   }, []);
 
-  console.debug(args[currentBreakpoint]);
-
   return args[currentBreakpoint];
 };
