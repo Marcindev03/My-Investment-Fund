@@ -131,11 +131,21 @@ const SideBar: FC = () => {
               <li className="items-center">
                 <Link
                   href="/admin/users"
-                  className="flex items-center text-blueGray-700
-                  hover:text-blueGray-500 text-xs uppercase py-3 font-bold
-                  "
+                  className={
+                    "flex items-center text-xs uppercase py-3 font-bold " +
+                    (router.pathname.indexOf("/admin/users") !== -1
+                      ? "text-lightBlue-500 hover:text-lightBlue-600"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
                 >
-                  <FaUser className="text-blueGray-400 mr-2 text-sm" />
+                  <FaUser
+                    className={
+                      `mr-2 text-sm ` +
+                      (router.pathname.indexOf("/admin/users") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  />
                   Users
                 </Link>
               </li>
