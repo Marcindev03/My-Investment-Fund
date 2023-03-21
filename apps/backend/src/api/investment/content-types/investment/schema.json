@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "investments",
+  "info": {
+    "singularName": "investment",
+    "pluralName": "investments",
+    "displayName": "Investment"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "currency": {
+      "type": "string",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "exchangeRate": {
+      "type": "decimal",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "adminConfirmed": {
+      "type": "boolean",
+      "required": true
+    },
+    "userConfirmed": {
+      "type": "boolean",
+      "required": true
+    }
+  }
+}
