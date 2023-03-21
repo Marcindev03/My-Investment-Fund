@@ -59,3 +59,5 @@ export const USER_SIDEBAR_ITEMS: SidebarItem[] = [
 ];
 
 export const APP_NAME = "My Investments Found";
+
+export const APP_NAME_SHORTCUT = "MIF";

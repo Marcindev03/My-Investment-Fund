@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
-import { APP_NAME, SHARED_SIDEBAR_ITEMS } from "mocks/data";
+import { APP_NAME_SHORTCUT, SHARED_SIDEBAR_ITEMS } from "mocks/data";
 import {
   BsChevronDoubleLeft,
   BsChevronDoubleDown,
@@ -34,10 +34,10 @@ const SideBar: FC = () => {
             <Link
               href="/"
               className="mr-4 md:block text-left md:pb-2
-            text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm
+            text-blueGray-600 inline-block whitespace-nowrap text-2xl
             uppercase font-bold p-4 px-0"
             >
-              {APP_NAME}
+              {APP_NAME_SHORTCUT}
             </Link>
             <button
               className="cursor-pointer text-black opacity-50 w-10 h-10 flex justify-center items-center leading-none bg-transparent rounded border border-solid border-transparent"
