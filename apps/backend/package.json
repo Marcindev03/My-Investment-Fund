@@ -7,14 +7,17 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "seed_all": "ts-node ./database/seed/setup.ts"
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.8.2",
-    "@strapi/plugin-users-permissions": "4.8.2",
     "@strapi/plugin-i18n": "4.8.2",
-    "pg": "8.8.0"
+    "@strapi/plugin-users-permissions": "4.8.2",
+    "@strapi/strapi": "4.8.2",
+    "dotenv": "^16.0.3",
+    "pg": "8.8.0",
+    "ts-node": "^10.9.1"
   },
   "author": {
     "name": "A Strapi developer"
