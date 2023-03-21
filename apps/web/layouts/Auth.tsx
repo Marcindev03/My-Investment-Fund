@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import Navbar from "components/Navbars/AuthNavbar.js";
+import Navbar from "components/Navbars/AuthNavbar";
 import FooterSmall from "components/Footers/FooterSmall";
 
 type AuthProps = {

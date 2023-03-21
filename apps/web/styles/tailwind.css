@@ -2822,11 +2822,6 @@ select {
     color: rgba(255, 255, 255, var(--tw-text-opacity));
   }
 
-  .lg\:text-blueGray-200 {
-    --tw-text-opacity: 1;
-    color: rgba(226, 232, 240, var(--tw-text-opacity));
-  }
-
   .lg\:hover\:text-blueGray-200:hover {
     --tw-text-opacity: 1;
     color: rgba(226, 232, 240, var(--tw-text-opacity));
