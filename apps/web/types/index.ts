@@ -1,5 +1,7 @@
+import { IconType } from "react-icons";
+
 export type SidebarItem = {
   href: string;
   text: string;
-  fontAwesomeIcon: string;
+  Icon: IconType;
 };

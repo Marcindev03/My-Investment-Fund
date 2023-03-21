@@ -1,4 +1,9 @@
 import { SidebarItem } from "types";
+import { BsFillBarChartFill } from "react-icons/bs";
+import { RxDashboard } from "react-icons/rx";
+import { CgArrowsExchangeAlt } from "react-icons/cg";
+import { IoDocumentsOutline } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
 
 export const NOTUS_MESSAGE = `
 
@@ -24,12 +29,22 @@ export const SHARED_SIDEBAR_ITEMS: SidebarItem[] = [
   {
     href: "/dashboard",
     text: "Dashboard",
-    fontAwesomeIcon: "fas fa-tv",
+    Icon: RxDashboard,
+  },
+  {
+    href: "/operations",
+    text: "Operations",
+    Icon: CgArrowsExchangeAlt,
+  },
+  {
+    href: "/investments",
+    text: "Investments",
+    Icon: BsFillBarChartFill,
   },
   {
     href: "/requests",
     text: "Requests",
-    fontAwesomeIcon: "fas fa-table",
+    Icon: IoDocumentsOutline,
   },
 ];
 
@@ -39,6 +54,8 @@ export const USER_SIDEBAR_ITEMS: SidebarItem[] = [
   {
     href: "/profile",
     text: "Profile",
-    fontAwesomeIcon: "fas fa-user",
+    Icon: FaUser,
   },
 ];
+
+export const APP_NAME = "My Investments Found";

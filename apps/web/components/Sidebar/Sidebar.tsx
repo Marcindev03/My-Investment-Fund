@@ -3,13 +3,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
-import { SHARED_SIDEBAR_ITEMS } from "mocks/data";
+import { APP_NAME, SHARED_SIDEBAR_ITEMS } from "mocks/data";
 import {
   BsChevronDoubleLeft,
   BsChevronDoubleDown,
   BsXLg,
 } from "react-icons/bs";
 import { useBreakpointValue } from "hooks";
+import { FaUser } from "react-icons/fa";
 
 const SIDEBAR_ITEMS_DEV_PREFIX = "/admin";
 
@@ -36,7 +37,7 @@ const SideBar: FC = () => {
             text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm
             uppercase font-bold p-4 px-0"
             >
-              Notus NextJS
+              {APP_NAME}
             </Link>
             <button
               className="cursor-pointer text-black opacity-50 w-10 h-10 flex justify-center items-center leading-none bg-transparent rounded border border-solid border-transparent"
@@ -93,26 +94,29 @@ const SideBar: FC = () => {
             </h6>
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
-              {SHARED_SIDEBAR_ITEMS.map(({ href, text, fontAwesomeIcon }) => (
+              {SHARED_SIDEBAR_ITEMS.map(({ href, text, Icon }) => (
                 <li className="items-center">
                   <Link
                     href={SIDEBAR_ITEMS_DEV_PREFIX + href}
                     className={
-                      "text-xs uppercase py-3 font-bold block " +
+                      "flex items-center text-xs uppercase py-3 font-bold " +
                       (router.pathname.indexOf(href) !== -1
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
                   >
-                    <i
-                      className={
-                        `${fontAwesomeIcon} mr-2 text-sm ` +
-                        (router.pathname.indexOf("/admin/dashboard") !== -1
-                          ? "opacity-75"
-                          : "text-blueGray-300")
-                      }
-                    ></i>
-                    {text}
+                    <>
+                      <Icon
+                        size="1.5em"
+                        className={
+                          `mr-2 text-sm ` +
+                          (router.pathname.indexOf(href) !== -1
+                            ? "opacity-75"
+                            : "text-blueGray-300")
+                        }
+                      />
+                      {text}
+                    </>
                   </Link>
                 </li>
               ))}
@@ -127,11 +131,11 @@ const SideBar: FC = () => {
               <li className="items-center">
                 <Link
                   href="/admin/users"
-                  className="text-blueGray-700
+                  className="flex items-center text-blueGray-700
                   hover:text-blueGray-500 text-xs uppercase py-3 font-bold
-                  block"
+                  "
                 >
-                  <i className="fas fa-user text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <FaUser className="text-blueGray-400 mr-2 text-sm" />
                   Users
                 </Link>
               </li>
