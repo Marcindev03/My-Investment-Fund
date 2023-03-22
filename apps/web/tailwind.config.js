@@ -8,6 +8,7 @@ module.exports = {
       "./pages/**/*.{js,ts,jsx,tsx}",
       "./components/**/*.{js,ts,jsx,tsx}",
       "./layouts/**/*.{js,ts,jsx,tsx}",
+      "./modules/**/*.{js,ts,jsx,tsx}",
       "../../packages/ui/**/*.{js,ts,jsx,tsx}",
     ],
     options: {

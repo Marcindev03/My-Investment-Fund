@@ -3,3 +3,5 @@ export const EMAIL_REGEX =
 
 export const PASSWORD_REGEX =
   /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{12,})/;
+
+export const BASE_CURRENCY = "PLN";

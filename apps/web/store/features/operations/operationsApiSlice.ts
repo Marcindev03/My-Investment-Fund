@@ -1,8 +1,9 @@
 import { apiSlice } from "store/api/apiSlice";
+import { OperationsResponseType } from "../../../types";
 
 export const operationsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getOperations: builder.query<any, void>({
+    getOperations: builder.query<OperationsResponseType, void>({
       query: () => ({
         url: "/operations",
         method: "GET",
