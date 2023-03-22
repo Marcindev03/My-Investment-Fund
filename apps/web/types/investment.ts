@@ -1,16 +1,15 @@
 import { Confirmation, RootResponse } from "types";
 
-type OperationType = "deposit" | "withdrawal";
-
-export type Operation = {
+export type Investment = {
   id: number;
   attributes: {
     amount: number;
-    type: OperationType;
+    currency: string;
+    exchangeRate: number;
     createdAt: string; // ISO string
     date: string; // ISO string
     updatedAt: string; // ISO string
   } & Confirmation;
 };
 
-export type OperationsResponse = RootResponse<Operation>;
+export type InvestmentResponse = RootResponse<Investment>;
