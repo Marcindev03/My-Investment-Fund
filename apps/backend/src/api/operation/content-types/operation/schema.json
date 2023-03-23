@@ -4,7 +4,8 @@
   "info": {
     "singularName": "operation",
     "pluralName": "operations",
-    "displayName": "Operation"
+    "displayName": "Operation",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -34,11 +35,13 @@
     },
     "adminConfirmed": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": false
     },
     "userConfirmed": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": false
     }
   }
 }

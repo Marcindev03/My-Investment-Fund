@@ -28,11 +28,13 @@ const TABLE_COLUMNS = [
 
 type InvestmentsTableProps = {
   investments: Investment[];
+  title?: string;
   color?: "light" | "dark";
 };
 
 export const InvestmentsTable: FC<InvestmentsTableProps> = ({
   investments,
+  title = "Investments",
   color = "light",
 }) => {
   return (
@@ -52,7 +54,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                   (color === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Operations
+                {title}
               </h3>
             </div>
           </div>
@@ -129,8 +131,8 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                       {adminConfirmed ? "confirmed" : "pending"}
                     </td>
                     {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                    <TableDropdown />
-                  </td> */}
+                      <TableDropdown />
+                    </td> */}
                   </tr>
                 )
               )}

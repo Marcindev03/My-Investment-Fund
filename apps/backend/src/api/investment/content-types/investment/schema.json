@@ -4,7 +4,8 @@
   "info": {
     "singularName": "investment",
     "pluralName": "investments",
-    "displayName": "Investment"
+    "displayName": "Investment",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -36,11 +37,13 @@
     },
     "adminConfirmed": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": false
     },
     "userConfirmed": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": false
     }
   }
 }

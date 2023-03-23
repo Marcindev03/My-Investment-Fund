@@ -12,4 +12,4 @@ export type Investment = {
   } & Confirmation;
 };
 
-export type InvestmentResponse = RootResponse<Investment>;
+export type InvestmentsResponse = RootResponse<Investment>;

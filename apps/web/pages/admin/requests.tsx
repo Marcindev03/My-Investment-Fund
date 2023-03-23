@@ -1,34 +1,51 @@
-import CardLineChart from "components/Cards/CardLineChart.js";
-import CardBarChart from "components/Cards/CardBarChart.js";
-import CardPageVisits from "components/Cards/CardPageVisits.js";
-import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
 import Admin from "layouts/Admin";
 import Head from "next/head";
+import { wrapper } from "store";
+import {
+  getInvestmentsRequests,
+  getOperationsRequests,
+  getRunningQueriesThunk,
+  useGetInvestmentsRequestsQuery,
+  useGetOperationsRequestsQuery,
+} from "store/features/requests/requestsApiSlice";
+import { InvestmentsTable } from "modules/investments";
+import { OperationsTable } from "modules/operations";
 
 export default function Dashboard() {
+  const { data: investmentsRequests } = useGetInvestmentsRequestsQuery();
+  const { data: operationsRequests } = useGetOperationsRequestsQuery();
+
   return (
     <>
       <Head>
         <title>Admin - Requests</title>
       </Head>
-      <div className="flex flex-wrap">
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-          <CardLineChart />
-        </div>
-        <div className="w-full xl:w-4/12 px-4">
-          <CardBarChart />
-        </div>
-      </div>
       <div className="flex flex-wrap mt-4">
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-          <CardPageVisits />
-        </div>
-        <div className="w-full xl:w-4/12 px-4">
-          <CardSocialTraffic />
-        </div>
+        <InvestmentsTable
+          title="Investments To Confirm"
+          investments={investmentsRequests?.data.slice(0, 5) ?? []}
+        />
+        <OperationsTable
+          title="Operations To Confirm"
+          color="dark"
+          operations={operationsRequests?.data.slice(0, 5) ?? []}
+        />
       </div>
     </>
   );
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (context) => {
+    store.dispatch(getInvestmentsRequests.initiate());
+    store.dispatch(getOperationsRequests.initiate());
+
+    await Promise.all(store.dispatch(getRunningQueriesThunk()));
+
+    return {
+      props: {},
+    };
+  }
+);
 
 Dashboard.layout = Admin;

@@ -26,11 +26,13 @@ const TABLE_COLUMNS = [
 
 type OperationsTableProps = {
   operations: Operation[];
+  title?: string;
   color?: "light" | "dark";
 };
 
 export const OperationsTable: FC<OperationsTableProps> = ({
   operations,
+  title = "Operations",
   color = "light",
 }) => {
   return (
@@ -50,7 +52,7 @@ export const OperationsTable: FC<OperationsTableProps> = ({
                   (color === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Operations
+                {title}
               </h3>
             </div>
           </div>

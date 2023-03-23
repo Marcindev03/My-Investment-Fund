@@ -1,9 +1,9 @@
 import { apiSlice } from "store/api/apiSlice";
-import { InvestmentResponse } from "types";
+import { InvestmentsResponse } from "types";
 
 export const investmentsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getInvestments: builder.query<InvestmentResponse, void>({
+    getInvestments: builder.query<InvestmentsResponse, void>({
       query: () => ({
         url: "/investments",
         method: "GET",
