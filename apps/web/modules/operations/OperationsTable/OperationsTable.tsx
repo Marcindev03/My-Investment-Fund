@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Operation } from "types";
 import { BASE_CURRENCY } from "ui/constants";
-import ClassNames from "class-names";
+import ClassNames from "classnames";
 
 const TABLE_COLUMNS = [
   {

@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import ClassNames from "class-names";
+import ClassNames from "classnames";
 import { CgSpinner } from "react-icons/cg";
 
 type ButtonProps = {

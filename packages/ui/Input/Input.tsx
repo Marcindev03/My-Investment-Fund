@@ -1,5 +1,5 @@
-import { ChangeEvent, FC, RefObject } from "react";
-import ClassNames from "class-names";
+import { ChangeEvent, FC } from "react";
+import ClassNames from "classnames";
 
 type InputProps = {
   value: string;

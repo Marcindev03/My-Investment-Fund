@@ -8,7 +8,7 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "class-names": "^1.0.0",
+    "classnames": "^2.3.2",
     "next": "^13.2.4",
     "react-icons": "^4.8.0"
   },

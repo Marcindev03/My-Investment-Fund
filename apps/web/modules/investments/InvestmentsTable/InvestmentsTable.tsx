@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Investment } from "types";
-import ClassNames from "class-names";
+import ClassNames from "classnames";
 
 const TABLE_COLUMNS = [
   {
