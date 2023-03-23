@@ -42,6 +42,12 @@
       "type": "boolean",
       "required": true,
       "default": false
+    },
+    "client": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::client.client",
+      "mappedBy": "operation"
     }
   }
 }
