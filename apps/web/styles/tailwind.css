@@ -1869,6 +1869,11 @@ select {
   padding-bottom: 1.25rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -2411,12 +2416,20 @@ select {
     justify-content: space-between;
   }
 
+  .md\:m-0 {
+    margin: 0px;
+  }
+
   .md\:mt-4 {
     margin-top: 1rem;
   }
 
   .md\:mb-4 {
     margin-bottom: 1rem;
+  }
+
+  .md\:ml-20 {
+    margin-left: 5rem;
   }
 
   .md\:ml-64 {
@@ -2443,6 +2456,10 @@ select {
     overflow-y: auto;
   }
 
+  .md\:p-0 {
+    padding: 0px;
+  }
+
   .md\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -2456,8 +2473,8 @@ select {
     padding-right: 3rem;
   }
 
-  .md\:pt-32 {
-    padding-top: 8rem;
+  .md\:pt-16 {
+    padding-top: 4rem;
   }
 
   .md\:fixed {
@@ -2478,6 +2495,10 @@ select {
 
   .md\:left-0 {
     left: 0px;
+  }
+
+  .md\:-left-44 {
+    left: -11rem;
   }
 
   .md\:shadow-none {

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
@@ -8,13 +8,19 @@ import {
   BsChevronDoubleLeft,
   BsChevronDoubleDown,
   BsXLg,
+  BsChevronDoubleRight,
 } from "react-icons/bs";
 import { useBreakpointValue } from "hooks";
 import { FaUser } from "react-icons/fa";
+import ClassNames from "classnames";
 
 const SIDEBAR_ITEMS_DEV_PREFIX = "/admin";
 
-const SideBar: FC = () => {
+type SideBarProps = {
+  onToogleCollapse?: (isCollapsed: boolean) => void;
+};
+
+const SideBar: FC<SideBarProps> = ({ onToogleCollapse }) => {
   const sidebarButtonArrowDirection = useBreakpointValue({
     base: "vertical",
     sm: "vertical",
@@ -23,12 +29,22 @@ const SideBar: FC = () => {
     xl: "horizontal",
     "2xl": "horizontal",
   });
-  const [collapseShow, setCollapseShow] = React.useState("hidden");
+  const [collapseShow, setCollapseShow] = useState("hidden");
   const router = useRouter();
+
+  const [collapseSidebar, setCollapseSidebar] = useState(false);
 
   return (
     <>
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+      <nav
+        className={ClassNames(
+          "transition-all md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4",
+          {
+            "md:-left-44 px-5": collapseSidebar,
+            "md:left-0 px-6": !collapseSidebar,
+          }
+        )}
+      >
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
           <section className="flex items-center md:justify-between">
             <Link
@@ -40,12 +56,22 @@ const SideBar: FC = () => {
               {APP_NAME_SHORTCUT}
             </Link>
             <button
-              className="cursor-pointer text-black opacity-50 w-10 h-10 flex justify-center items-center leading-none bg-transparent rounded border border-solid border-transparent"
+              className={
+                "cursor-pointer  text-black opacity-50 w-10 h-10 flex justify-center items-center leading-none bg-transparent rounded border border-solid border-transparent"
+              }
               type="button"
-              onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
+              onClick={() => {
+                setCollapseShow("bg-white m-2 py-3 px-6");
+                setCollapseSidebar((prevState) => {
+                  onToogleCollapse?.(!prevState);
+                  return !prevState;
+                });
+              }}
             >
               {sidebarButtonArrowDirection === "vertical" ? (
                 <BsChevronDoubleDown size="1.3em" />
+              ) : collapseSidebar ? (
+                <BsChevronDoubleRight size="1.3em" />
               ) : (
                 <BsChevronDoubleLeft size="1.3em" />
               )}
@@ -61,7 +87,7 @@ const SideBar: FC = () => {
           </ul>
           <div
             className={
-              "md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded " +
+              "md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:m-0 md:p-0 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded" +
               collapseShow
             }
           >
