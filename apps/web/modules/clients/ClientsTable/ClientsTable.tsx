@@ -1,40 +1,34 @@
 import { FC } from "react";
-import { Investment } from "types";
-import ClassNames from "class-names";
+import { Client } from "types/client";
+import { BASE_CURRENCY } from "ui/constants";
 
 const TABLE_COLUMNS = [
   {
-    name: "Amount",
+    name: "First Name",
   },
   {
-    name: "Currency",
+    name: "Last Name",
   },
   {
-    name: "Exchange Rate",
+    name: "Email",
   },
   {
-    name: "Date",
+    name: "Photo",
   },
   {
-    name: "User",
-  },
-  {
-    name: "User Confirmed",
-  },
-  {
-    name: "Admin Confirmed",
+    name: "Base Currency Value",
   },
 ];
 
-type InvestmentsTableProps = {
-  investments: Investment[];
+type ClientsTableProps = {
+  clients: Client[];
   title?: string;
   color?: "light" | "dark";
 };
 
-export const InvestmentsTable: FC<InvestmentsTableProps> = ({
-  investments,
-  title = "Investments",
+export const ClientsTable: FC<ClientsTableProps> = ({
+  clients,
+  title = "Clients",
   color = "light",
 }) => {
   return (
@@ -78,30 +72,27 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
               </tr>
             </thead>
             <tbody>
-              {investments.map(
+              {clients.map(
                 ({
                   id,
                   attributes: {
-                    amount,
-                    currency,
-                    exchangeRate,
-                    date,
-                    userConfirmed,
-                    adminConfirmed,
+                    baseCurrencyValue,
+                    users_permissions_user: {
+                      data: {
+                        attributes: { firstName, lastName, email },
+                      },
+                    },
                   },
                 }) => (
-                  <tr key={`investments_table_item-${id}`}>
+                  <tr key={`clients_table_item-${id}`}>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {amount}
+                      {firstName}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {currency}
+                      {lastName}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {exchangeRate}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {date}
+                      {email}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       <div className="flex">
@@ -113,22 +104,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                       </div>
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <i
-                        className={ClassNames("fas fa-circle mr-2", {
-                          "text-orange-500": !userConfirmed,
-                          "text-green-500": userConfirmed,
-                        })}
-                      ></i>{" "}
-                      {userConfirmed ? "confirmed" : "pending"}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <i
-                        className={ClassNames("fas fa-circle mr-2", {
-                          "text-orange-500": !adminConfirmed,
-                          "text-green-500": adminConfirmed,
-                        })}
-                      ></i>{" "}
-                      {adminConfirmed ? "confirmed" : "pending"}
+                      {baseCurrencyValue} {BASE_CURRENCY}
                     </td>
                     {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
                       <TableDropdown />
@@ -144,4 +120,4 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
   );
 };
 
-export default InvestmentsTable;
+export default ClientsTable;

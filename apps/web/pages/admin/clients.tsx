@@ -16,7 +16,9 @@ export default function Clients() {
       <Head>
         <title>Admin - Clients</title>
       </Head>
-      <div className="flex flex-wrap mt-4">{/* <ClientsTable /> */}</div>
+      <div className="flex flex-wrap mt-4">
+        <ClientsTable clients={data?.data.slice(0, 10) ?? []} />
+      </div>
     </>
   );
 }
