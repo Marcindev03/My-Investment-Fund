@@ -130,10 +130,10 @@ const SideBar: FC = () => {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <Link
-                  href="/admin/users"
+                  href="/admin/clients"
                   className={
                     "flex items-center text-xs uppercase py-3 font-bold " +
-                    (router.pathname.indexOf("/admin/users") !== -1
+                    (router.pathname.indexOf("/admin/clients") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
@@ -141,12 +141,12 @@ const SideBar: FC = () => {
                   <FaUser
                     className={
                       `mr-2 text-sm ` +
-                      (router.pathname.indexOf("/admin/users") !== -1
+                      (router.pathname.indexOf("/admin/clients") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
                   />
-                  Users
+                  Clients
                 </Link>
               </li>
             </ul>

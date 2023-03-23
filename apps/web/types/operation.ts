@@ -1,16 +1,13 @@
-import { Confirmation, RootResponse } from "types";
+import { Confirmation, Entity, RootResponse } from "types";
 
 type OperationType = "deposit" | "withdrawal";
 
-export type Operation = {
-  id: number;
-  attributes: {
+export type Operation = Entity<
+  {
     amount: number;
     type: OperationType;
-    createdAt: string; // ISO string
     date: string; // ISO string
-    updatedAt: string; // ISO string
-  } & Confirmation;
-};
+  } & Confirmation
+>;
 
 export type OperationsResponse = RootResponse<Operation>;

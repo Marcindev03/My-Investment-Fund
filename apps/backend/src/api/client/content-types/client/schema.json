@@ -4,7 +4,8 @@
   "info": {
     "singularName": "client",
     "pluralName": "clients",
-    "displayName": "Client"
+    "displayName": "Client",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -17,17 +18,17 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "client"
     },
-    "investment": {
+    "investments": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::investment.investment",
-      "inversedBy": "client"
+      "mappedBy": "client"
     },
-    "operation": {
+    "operations": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::operation.operation",
-      "inversedBy": "client"
+      "mappedBy": "client"
     },
     "baseCurrencyValue": {
       "type": "decimal",

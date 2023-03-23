@@ -71,6 +71,14 @@
       "relation": "oneToOne",
       "target": "api::client.client",
       "mappedBy": "users_permissions_user"
+    },
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
     }
   }
 }

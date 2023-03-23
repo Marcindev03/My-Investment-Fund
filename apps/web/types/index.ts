@@ -9,6 +9,14 @@ export type SidebarItem = {
   Icon: IconType;
 };
 
+export type Entity<T> = {
+  id: number;
+  attributes: {
+    createdAt: string; // ISO string
+    updatedAt: string; // ISO string
+  } & T;
+};
+
 type ResponseMeta = {
   page: number;
   pageCount: number;

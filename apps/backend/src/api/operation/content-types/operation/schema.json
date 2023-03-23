@@ -45,9 +45,9 @@
     },
     "client": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::client.client",
-      "mappedBy": "operation"
+      "inversedBy": "operations"
     }
   }
 }
