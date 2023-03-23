@@ -1,5 +1,5 @@
 import { apiSlice } from "store/api/apiSlice";
-import { OperationsResponse } from "../../../types";
+import { OperationsResponse, OperationType } from "../../../types";
 
 export const operationsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,11 +9,27 @@ export const operationsApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    addOperation: builder.mutation<
+      any,
+      { amount: number; type: OperationType; userId: number }
+    >({
+      query: ({ amount, type, userId }) => ({
+        url: "/operations",
+        method: "POST",
+        body: {
+          data: {
+            amount,
+            type,
+          },
+        },
+      }),
+    }),
   }),
 });
 
 export const {
   useGetOperationsQuery,
+  useAddOperationMutation,
   util: { getRunningQueriesThunk },
 } = operationsApiSlice;
 

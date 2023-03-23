@@ -1,6 +1,6 @@
 import { Confirmation, Entity, RootResponse } from "types";
 
-type OperationType = "deposit" | "withdrawal";
+export type OperationType = "deposit" | "withdrawal";
 
 export type Operation = Entity<
   {

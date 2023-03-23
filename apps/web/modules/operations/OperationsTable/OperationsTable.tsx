@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Operation } from "types";
 import { BASE_CURRENCY } from "ui/constants";
 import ClassNames from "classnames";
+import { Button } from "ui";
 
 const TABLE_COLUMNS = [
   {
@@ -28,12 +29,14 @@ type OperationsTableProps = {
   operations: Operation[];
   title?: string;
   color?: "light" | "dark";
+  onRequestButtonClick: () => void;
 };
 
 export const OperationsTable: FC<OperationsTableProps> = ({
   operations,
   title = "Operations",
   color = "light",
+  onRequestButtonClick,
 }) => {
   return (
     <>
@@ -54,6 +57,11 @@ export const OperationsTable: FC<OperationsTableProps> = ({
               >
                 {title}
               </h3>
+            </div>
+            <div>
+              <Button primary onClick={onRequestButtonClick}>
+                Request Operation
+              </Button>
             </div>
           </div>
         </div>
