@@ -25,11 +25,16 @@ const operationsSQL = fs
   .readFileSync(path.resolve(__dirname, "entities", "operations.sql"))
   .toString();
 
+const currenciesSQL = fs
+  .readFileSync(path.resolve(__dirname, "entities", "currencies.sql"))
+  .toString();
+
 const app = async () => {
   await pool.query(clearTablesSQL);
 
   pool.query(investmentsSQL);
   pool.query(operationsSQL);
+  pool.query(currenciesSQL);
 };
 
 app();

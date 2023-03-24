@@ -1,1 +1,1 @@
-TRUNCATE "operations","investments" RESTART IDENTITY CASCADE
+TRUNCATE "operations","investments","currencies" RESTART IDENTITY CASCADE

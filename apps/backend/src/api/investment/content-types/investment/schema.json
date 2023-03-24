@@ -17,12 +17,6 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "currency": {
-      "type": "string",
-      "required": true,
-      "minLength": 3,
-      "maxLength": 3
-    },
     "amount": {
       "type": "decimal",
       "required": true
@@ -50,6 +44,11 @@
       "relation": "manyToOne",
       "target": "api::client.client",
       "inversedBy": "investments"
+    },
+    "currency": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::currency.currency"
     }
   }
 }
