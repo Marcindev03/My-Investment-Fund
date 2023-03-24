@@ -1,15 +1,18 @@
 import CardStats from "components/Cards/CardStats";
 import { FC } from "react";
+import { Currency } from "types";
 import { BASE_CURRENCY } from "ui/constants";
 
 type HeaderStatsProps = {
   baseCurrencyValue: number;
   baseCurrencyAmount: number;
+  mostValuableCurrencies: Currency[];
 };
 
 const HeaderStats: FC<HeaderStatsProps> = ({
   baseCurrencyValue,
   baseCurrencyAmount,
+  mostValuableCurrencies,
 }) => {
   return (
     <>
@@ -33,22 +36,18 @@ const HeaderStats: FC<HeaderStatsProps> = ({
                   statIconColor="bg-orange-500"
                 />
               </div>
-              {/* <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="SALES"
-                  statValue="924"
-                  statIconName="fas fa-users"
-                  statIconColor="bg-pink-500"
-                />
-              </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="PERFORMANCE"
-                  statValue="49,65%"
-                  statIconName="fas fa-percent"
-                  statIconColor="bg-lightBlue-500"
-                />
-              </div> */}
+              {mostValuableCurrencies.map(
+                ({ attributes: { name, symbol, value } }) => (
+                  <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+                    <CardStats
+                      statSubtitle={`${name} VALUE`}
+                      statValue={`${value} ${symbol}`}
+                      statIconName="fas fa-users"
+                      statIconColor="bg-pink-500"
+                    />
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>

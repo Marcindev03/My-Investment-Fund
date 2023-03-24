@@ -7,6 +7,7 @@ import FooterAdmin from "components/Footers/FooterAdmin.js";
 import {
   useGetBaseCurrencyAmountQuery,
   useGetBaseCurrencyValueQuery,
+  useGetMostValuableCurrenciesQuery,
 } from "store/features/dashboard/dashboardApiSlice";
 
 type AdminProps = {
@@ -16,6 +17,8 @@ type AdminProps = {
 const Admin: FC<AdminProps> = ({ children }) => {
   const { data: baseCurrencyValueData } = useGetBaseCurrencyValueQuery();
   const { data: baseCurrencyAmountData } = useGetBaseCurrencyAmountQuery();
+  const { data: mostValuableCurrenciesData } =
+    useGetMostValuableCurrenciesQuery();
 
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
@@ -33,8 +36,11 @@ const Admin: FC<AdminProps> = ({ children }) => {
       >
         <AdminNavbar />
         <HeaderStats
-          baseCurrencyValue={baseCurrencyValueData?.data?.attributes.value}
-          baseCurrencyAmount={baseCurrencyAmountData?.data?.attributes?.value}
+          baseCurrencyValue={baseCurrencyValueData?.data?.attributes.value ?? 0}
+          baseCurrencyAmount={
+            baseCurrencyAmountData?.data?.attributes?.value ?? 0
+          }
+          mostValuableCurrencies={mostValuableCurrenciesData?.data ?? []}
         />
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           {children}

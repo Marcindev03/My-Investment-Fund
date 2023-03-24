@@ -1,4 +1,4 @@
-import { Entity, RootResponse } from "types";
+import { Entity, ArrayResponse } from "types";
 import { UsersPermissionsUser } from "./usersPermissionUser";
 
 export type Client = Entity<{
@@ -8,4 +8,4 @@ export type Client = Entity<{
   };
 }>;
 
-export type ClientsResponse = RootResponse<Client>;
+export type ClientsResponse = ArrayResponse<Client>;

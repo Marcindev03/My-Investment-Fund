@@ -2,6 +2,9 @@ export * from "./operation";
 export * from "./investment";
 export * from "./client";
 export * from "./usersPermissionUser";
+export * from "./baseCurrencyAmount";
+export * from "./baseCurrencyValue";
+export * from "./currency";
 
 import { IconType } from "react-icons";
 
@@ -26,8 +29,13 @@ type ResponseMeta = {
   total: number;
 };
 
-export type RootResponse<T> = {
+export type ArrayResponse<T> = {
   data: T[];
+  meta: ResponseMeta;
+};
+
+export type SingleResponse<T> = {
+  data: T;
   meta: ResponseMeta;
 };
 

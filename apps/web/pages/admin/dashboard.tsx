@@ -8,6 +8,7 @@ import { wrapper } from "store";
 import {
   getBaseCurrencyAmount,
   getBaseCurrencyValue,
+  getMostValuableCurrencies,
   getRunningQueriesThunk,
 } from "store/features/dashboard/dashboardApiSlice";
 
@@ -41,6 +42,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
     store.dispatch(getBaseCurrencyValue.initiate());
     store.dispatch(getBaseCurrencyAmount.initiate());
+    store.dispatch(getMostValuableCurrencies.initiate());
 
     await Promise.all(store.dispatch(getRunningQueriesThunk()));
 

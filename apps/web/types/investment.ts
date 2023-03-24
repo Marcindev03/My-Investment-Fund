@@ -1,4 +1,4 @@
-import { Confirmation, Entity, RootResponse } from "types";
+import { Confirmation, Entity, ArrayResponse } from "types";
 
 export type Investment = Entity<
   {
@@ -9,4 +9,4 @@ export type Investment = Entity<
   } & Confirmation
 >;
 
-export type InvestmentsResponse = RootResponse<Investment>;
+export type InvestmentsResponse = ArrayResponse<Investment>;
