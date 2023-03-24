@@ -4,14 +4,18 @@ import AdminNavbar from "components/Navbars/AdminNavbar";
 import Sidebar from "components/Sidebar/Sidebar";
 import HeaderStats from "components/Headers/HeaderStats";
 import FooterAdmin from "components/Footers/FooterAdmin.js";
-import { useGetBaseCurrencyValueQuery } from "store/features/dashboard/dashboardApiSlice";
+import {
+  useGetBaseCurrencyAmountQuery,
+  useGetBaseCurrencyValueQuery,
+} from "store/features/dashboard/dashboardApiSlice";
 
 type AdminProps = {
   children: ReactNode;
 };
 
 const Admin: FC<AdminProps> = ({ children }) => {
-  const { data } = useGetBaseCurrencyValueQuery();
+  const { data: baseCurrencyValueData } = useGetBaseCurrencyValueQuery();
+  const { data: baseCurrencyAmountData } = useGetBaseCurrencyAmountQuery();
 
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
@@ -28,7 +32,10 @@ const Admin: FC<AdminProps> = ({ children }) => {
         )}
       >
         <AdminNavbar />
-        <HeaderStats baseCurrencyValue={data?.data?.attributes.value} />
+        <HeaderStats
+          baseCurrencyValue={baseCurrencyValueData?.data?.attributes.value}
+          baseCurrencyAmount={baseCurrencyAmountData?.data?.attributes?.value}
+        />
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           {children}
           <FooterAdmin />

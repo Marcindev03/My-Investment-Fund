@@ -8,12 +8,20 @@ export const dashboardApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["BaseCurrencyValue"],
     }),
+    getBaseCurrencyAmount: builder.query<any, void>({
+      query: () => ({
+        url: "/base-currency-amount",
+      }),
+      providesTags: ["BaseCurrencyAmount"],
+    }),
   }),
 });
 
 export const {
   useGetBaseCurrencyValueQuery,
+  useGetBaseCurrencyAmountQuery,
   util: { getRunningQueriesThunk },
 } = dashboardApiSlice;
 
-export const { getBaseCurrencyValue } = dashboardApiSlice.endpoints;
+export const { getBaseCurrencyValue, getBaseCurrencyAmount } =
+  dashboardApiSlice.endpoints;

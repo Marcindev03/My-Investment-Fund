@@ -3,7 +3,7 @@ export default {
     const { result } = event;
 
     const { value: baseCurrencyValue, id } = await strapi.db
-      .query("api::base-currency-value.base-currency-value")
+      .query("api::base-currency-amount.base-currency-amount")
       .findOne({
         select: ["id", "value"],
       });
@@ -19,7 +19,7 @@ export default {
     }
 
     await strapi.db
-      .query("api::base-currency-value.base-currency-value")
+      .query("api::base-currency-amount.base-currency-amount")
       .update({
         where: {
           id,

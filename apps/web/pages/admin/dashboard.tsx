@@ -6,6 +6,7 @@ import Admin from "layouts/Admin";
 import Head from "next/head";
 import { wrapper } from "store";
 import {
+  getBaseCurrencyAmount,
   getBaseCurrencyValue,
   getRunningQueriesThunk,
 } from "store/features/dashboard/dashboardApiSlice";
@@ -39,6 +40,7 @@ export default function Dashboard() {
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
     store.dispatch(getBaseCurrencyValue.initiate());
+    store.dispatch(getBaseCurrencyAmount.initiate());
 
     await Promise.all(store.dispatch(getRunningQueriesThunk()));
 

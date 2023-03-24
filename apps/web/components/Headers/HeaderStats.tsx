@@ -4,9 +4,13 @@ import { BASE_CURRENCY } from "ui/constants";
 
 type HeaderStatsProps = {
   baseCurrencyValue: number;
+  baseCurrencyAmount: number;
 };
 
-const HeaderStats: FC<HeaderStatsProps> = ({ baseCurrencyValue }) => {
+const HeaderStats: FC<HeaderStatsProps> = ({
+  baseCurrencyValue,
+  baseCurrencyAmount,
+}) => {
   return (
     <>
       <div className="relative bg-blueGray-800 md:pt-16 pb-32 pt-12">
@@ -21,15 +25,15 @@ const HeaderStats: FC<HeaderStatsProps> = ({ baseCurrencyValue }) => {
                   statIconColor="bg-red-500"
                 />
               </div>
-              {/* <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="NEW USERS"
-                  statValue="2,356"
+                  statSubtitle="BASE CURRENCY AMOUNT"
+                  statValue={`${baseCurrencyAmount} ${BASE_CURRENCY}`}
                   statIconName="fas fa-chart-pie"
                   statIconColor="bg-orange-500"
                 />
               </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              {/* <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
                   statSubtitle="SALES"
                   statValue="924"

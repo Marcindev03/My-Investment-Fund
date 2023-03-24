@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "base_currency_amounts",
+  "info": {
+    "singularName": "base-currency-amount",
+    "pluralName": "base-currency-amounts",
+    "displayName": "Base Currency Amount"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "value": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    }
+  }
+}
