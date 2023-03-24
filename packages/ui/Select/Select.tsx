@@ -41,7 +41,7 @@ export const Select: FC<SelectProps> = ({
       className={selectClassName}
       onBlur={() => onBlur?.()}
     >
-      <option value="">{placeholder}</option>
+      {!!placeholder && <option value="">{placeholder}</option>}
       {availableOptions.map(({ label, value }) => (
         <option value={value}>{label}</option>
       ))}
