@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { OperationType } from "types";
 import { Modal } from "ui";
 import { OperationForm } from "../OperationForm";
 
@@ -6,7 +7,11 @@ type OperationModalProps = {
   type?: "add" | "edit";
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm: (
+    amount: number,
+    operationType: OperationType,
+    clientId: string
+  ) => void;
 };
 
 export const OperationModal: FC<OperationModalProps> = ({
@@ -19,8 +24,7 @@ export const OperationModal: FC<OperationModalProps> = ({
     isOpen={isOpen}
     title={type !== "add" ? "Edit Operation" : "Request New Operation"}
     onClose={onClose}
-    onConfirm={onConfirm}
   >
-    <OperationForm />
+    <OperationForm onReject={onClose} onSubmit={onConfirm} />
   </Modal>
 );

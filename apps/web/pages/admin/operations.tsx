@@ -5,17 +5,30 @@ import { wrapper } from "store";
 import {
   getOperations,
   getRunningQueriesThunk,
+  useAddOperationMutation,
   useGetOperationsQuery,
 } from "store/features/operations/operationsApiSlice";
 import { OperationsTable } from "modules/operations";
 import { OperationModal } from "modules/operations/OperationModal";
+import { OperationType } from "types";
 
 export default function Dashboard() {
   const { data } = useGetOperationsQuery();
+  const [addOperation] = useAddOperationMutation();
 
   const { isOpen, onClose, onOpen } = useModal();
 
-  const handleAddNewOperation = () => {};
+  const handleAddNewOperation = (
+    amount: number,
+    operationType: OperationType,
+    clientId: string
+  ) => {
+    addOperation({
+      amount,
+      type: operationType,
+      clientId: +clientId,
+    });
+  };
 
   return (
     <>

@@ -36,12 +36,12 @@ export const Select: FC<SelectProps> = ({
 
   return (
     <select
-      placeholder={placeholder}
       value={value}
       onChange={handleSelectChange}
       className={selectClassName}
       onBlur={() => onBlur?.()}
     >
+      <option value="">{placeholder}</option>
       {availableOptions.map(({ label, value }) => (
         <option value={value}>{label}</option>
       ))}

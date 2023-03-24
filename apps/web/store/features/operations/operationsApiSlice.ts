@@ -10,16 +10,19 @@ export const operationsApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     addOperation: builder.mutation<
-      any,
-      { amount: number; type: OperationType; userId: number }
+      void,
+      { amount: number; type: OperationType; clientId: number }
     >({
-      query: ({ amount, type, userId }) => ({
+      query: ({ amount, type, clientId }) => ({
         url: "/operations",
         method: "POST",
         body: {
           data: {
             amount,
             type,
+            date: new Date().toISOString(),
+            adminConfirmed: true,
+            client: clientId,
           },
         },
       }),
