@@ -1,5 +1,7 @@
 export * from "./operation";
 export * from "./investment";
+export * from "./client";
+export * from "./usersPermissionUser";
 
 import { IconType } from "react-icons";
 

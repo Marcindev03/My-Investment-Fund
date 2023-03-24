@@ -29,7 +29,7 @@ type OperationsTableProps = {
   operations: Operation[];
   title?: string;
   color?: "light" | "dark";
-  onRequestButtonClick: () => void;
+  onRequestButtonClick?: () => void;
 };
 
 export const OperationsTable: FC<OperationsTableProps> = ({
@@ -58,11 +58,13 @@ export const OperationsTable: FC<OperationsTableProps> = ({
                 {title}
               </h3>
             </div>
-            <div>
-              <Button primary onClick={onRequestButtonClick}>
-                Request Operation
-              </Button>
-            </div>
+            {!!onRequestButtonClick && (
+              <div>
+                <Button primary onClick={onRequestButtonClick}>
+                  Request Operation
+                </Button>
+              </div>
+            )}
           </div>
         </div>
         <div className="block w-full overflow-x-auto">

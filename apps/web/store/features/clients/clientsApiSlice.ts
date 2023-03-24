@@ -7,7 +7,7 @@ const query = qs.stringify(
     populate: "users_permissions_user",
   },
   {
-    encodeValuesOnly: true, // prettify URL
+    encodeValuesOnly: true,
   }
 );
 
