@@ -25,6 +25,12 @@ export const OperationModal: FC<OperationModalProps> = ({
     title={type !== "add" ? "Edit Operation" : "Request New Operation"}
     onClose={onClose}
   >
-    <OperationForm onReject={onClose} onSubmit={onConfirm} />
+    <OperationForm
+      onReject={onClose}
+      onSubmit={(...args) => {
+        onConfirm(...args);
+        onClose();
+      }}
+    />
   </Modal>
 );
