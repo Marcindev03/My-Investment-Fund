@@ -26,6 +26,7 @@ export const operationsApiSlice = apiSlice.injectEndpoints({
           },
         },
       }),
+      invalidatesTags: ["BaseCurrencyValue"],
     }),
   }),
 });

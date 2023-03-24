@@ -4,6 +4,11 @@ import CardPageVisits from "components/Cards/CardPageVisits.js";
 import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
 import Admin from "layouts/Admin";
 import Head from "next/head";
+import { wrapper } from "store";
+import {
+  getBaseCurrencyValue,
+  getRunningQueriesThunk,
+} from "store/features/dashboard/dashboardApiSlice";
 
 export default function Dashboard() {
   return (
@@ -30,5 +35,17 @@ export default function Dashboard() {
     </>
   );
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (context) => {
+    store.dispatch(getBaseCurrencyValue.initiate());
+
+    await Promise.all(store.dispatch(getRunningQueriesThunk()));
+
+    return {
+      props: {},
+    };
+  }
+);
 
 Dashboard.layout = Admin;

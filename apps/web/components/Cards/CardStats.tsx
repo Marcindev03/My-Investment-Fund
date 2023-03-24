@@ -2,22 +2,14 @@ import type { FC } from "react";
 
 type CardStatsProps = {
   statSubtitle: string;
-  statTitle: string;
-  statArrow: "up" | "down";
-  statPercent: string;
-  statPercentColor: string;
-  statDescripiron: string;
+  statValue: string | number;
   statIconName: string;
   statIconColor: string;
 };
 
 const CardStats: FC<CardStatsProps> = ({
   statSubtitle = "Traffic",
-  statTitle = "350,897",
-  statArrow = "up",
-  statPercent = "3.48",
-  statPercentColor = "text-emerald-500",
-  statDescripiron = "Since last month",
+  statValue,
   statIconName = "far fa-chart-bar",
   statIconColor = "bg-red-500",
 }) => (
@@ -30,7 +22,7 @@ const CardStats: FC<CardStatsProps> = ({
               {statSubtitle}
             </h5>
             <span className="font-semibold text-xl text-blueGray-700">
-              {statTitle}
+              {statValue}
             </span>
           </div>
           <div className="relative w-auto pl-4 flex-initial">
@@ -44,7 +36,7 @@ const CardStats: FC<CardStatsProps> = ({
             </div>
           </div>
         </div>
-        <p className="text-sm text-blueGray-400 mt-4">
+        {/* <p className="text-sm text-blueGray-400 mt-4">
           <span className={statPercentColor + " mr-2"}>
             <i
               className={
@@ -58,7 +50,7 @@ const CardStats: FC<CardStatsProps> = ({
             {statPercent}%
           </span>
           <span className="whitespace-nowrap">{statDescripiron}</span>
-        </p>
+        </p> */}
       </div>
     </div>
   </>

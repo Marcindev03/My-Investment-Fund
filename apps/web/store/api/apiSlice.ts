@@ -22,6 +22,6 @@ export const apiSlice = createApi({
       return action.payload[reducerPath];
     }
   },
-  tagTypes: [],
+  tagTypes: ["BaseCurrencyValue"],
   endpoints: (builder) => ({}),
 });
