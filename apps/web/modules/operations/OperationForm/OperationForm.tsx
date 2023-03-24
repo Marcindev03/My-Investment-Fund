@@ -74,7 +74,6 @@ export const OperationForm: FC<OperationFormProps> = ({
       </FormControl>
       <FormControl labelTitle={"Operation Type"}>
         <Select
-          placeholder="Choose operation type"
           value={operationType}
           availableOptions={availableOperationTypes}
           onChange={(value) => setOperationType(value as OperationType)}
