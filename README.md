@@ -1,73 +1,68 @@
-# Turborepo starter
+# My Investment Fund
 
-This is an official Yarn v1 starter turborepo.
+Simple web admin panel that simulates investment fund.
 
-## What's inside?
+## Technologies
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/) as a package manager. It includes the following packages/apps:
+### Monorepo
+* Turborepo
 
-### Apps and Packages
+### Admin panel theme
+* [Notus Next.js Tailwind](https://demos.creative-tim.com/notus-nextjs/)
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+### Front-end
+* React
+* Typescript (not every file is written in TS because of Admin panel theme)
+* Next.js
+* TailwindCSS (v. 2.0.4 because of Admin panel theme)
+* Redux Toolkit
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Backend
+* Strapi REST API
 
-### Utilities
+### External APIs
+* [Currency Converter](https://rapidapi.com/natkapral/api/currency-converter5/details)
 
-This turborepo has some additional tools already setup for you:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
+## Development Setup
+1. Make sure you have `Node.js` and `Docker` installed
+2. Run `apps/backend/docker-compose.yaml` file
+3. Install dependencies from project root directory
+```bash
+yarn 
 ```
-cd my-turborepo
-yarn run build
+5. Run apps in development mode
+```bash
+yarn dev
 ```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
+6. Seed database. Go to `apps/backend` and run
+```bash
+yarn seed_all
 ```
-cd my-turborepo
-yarn run dev
+7. Configure backend. Open strapi administration panel on http://localhost:1337/admin and register admin account. <br> Then navigate to http://localhost:1337/admin/settings/users-permissions/roles and check every permission for `Admin`, `Authenticated` and `Public`. <br>
+http://localhost:1337/admin/content-manager/collectionType/plugin::users-permissions.user create user by clicking create new entry button. Add `Admin` role to this new user <br>
+Same here with client http://localhost:1337/admin/content-manager/collectionType/api::client.client. When creating client add relation with investments, operations and user you've just created. 
+8. Now you can go and login into web app http://localhost:3000/auth/login Use email and password from user you created in step 7
+
+## Admin Web interface overview
+* [Dashboard](http://localhost:3000/admin/dashboard) - Dashboard with basic statistics and couple of charts
+* [Operations](http://localhost:3000/admin/operations) - List of operations (deposit or withdrawals). Here we can request for new operation
+* [Investments](http://localhost:3000/admin/investments) - List of investments (buy / sell currencies). Here you can request for new investment
+* [Requests](http://localhost:3000/admin/requests) - List of operations and investments that haven't beed confirmed yet
+* [Clients](http://localhost:3000/admin/clients) - List of clients of investment fund. Here you can manage their accounts and add new ones
+
+There is not page for register because this fund is not publicly open. If someone wants to be the client of this fund admin has to create new account.
+
+## Build & Start
+1. Run build command from project root directory
+```bash
+yarn build
 ```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
+2. Start web
+```bash
+yarn start:web
 ```
-cd my-turborepo
-npx turbo login
+3. Start backend
+```bash
+yarn start:backend
 ```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
