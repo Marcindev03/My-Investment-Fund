@@ -29,12 +29,25 @@ const currenciesSQL = fs
   .readFileSync(path.resolve(__dirname, "entities", "currencies.sql"))
   .toString();
 
+const investmentsCurrenciesLinksSQL = fs
+  .readFileSync(
+    path.resolve(__dirname, "entities", "investments_currency_links.sql")
+  )
+  .toString();
+
+const entitiesQueries = [investmentsSQL, operationsSQL, currenciesSQL];
+const relationQueries = [investmentsCurrenciesLinksSQL];
+
 const app = async () => {
   await pool.query(clearTablesSQL);
 
-  pool.query(investmentsSQL);
-  pool.query(operationsSQL);
-  pool.query(currenciesSQL);
+  await Promise.all(
+    entitiesQueries.map(async (query) => await pool.query(query))
+  );
+
+  await Promise.all(
+    relationQueries.map(async (query) => await pool.query(query))
+  );
 };
 
 app();
