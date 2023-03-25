@@ -73,6 +73,7 @@ export const OperationsTable: FC<OperationsTableProps> = ({
               <tr>
                 {TABLE_COLUMNS.map(({ name }) => (
                   <th
+                    key={`operation_table_column_${name}`}
                     className={
                       "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
                       (color === "light"
@@ -97,7 +98,7 @@ export const OperationsTable: FC<OperationsTableProps> = ({
                     adminConfirmed,
                   },
                 }) => (
-                  <tr key={`operations_table_item-${id}`}>
+                  <tr key={`operations_table_item_${id}`}>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {amount} {BASE_CURRENCY}
                     </td>

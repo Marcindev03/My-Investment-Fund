@@ -43,7 +43,9 @@ export const Select: FC<SelectProps> = ({
     >
       {!!placeholder && <option value="">{placeholder}</option>}
       {availableOptions.map(({ label, value }) => (
-        <option value={value}>{label}</option>
+        <option key={`option_${value}`} value={value}>
+          {label}
+        </option>
       ))}
     </select>
   );

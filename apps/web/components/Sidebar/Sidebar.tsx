@@ -121,7 +121,7 @@ const SideBar: FC<SideBarProps> = ({ onToogleCollapse }) => {
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               {SHARED_SIDEBAR_ITEMS.map(({ href, text, Icon }) => (
-                <li className="items-center">
+                <li className="items-center" key={`sidebar_item_${href}`}>
                   <Link
                     href={SIDEBAR_ITEMS_DEV_PREFIX + href}
                     className={

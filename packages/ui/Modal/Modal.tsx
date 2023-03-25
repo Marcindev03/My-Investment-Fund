@@ -56,9 +56,9 @@ export const Modal: FC<ModalProps> = ({
                   </header>
                 )}
                 <section className="relative p-6 flex-auto">
-                  <p className=" text-blueGray-500 text-lg leading-relaxed">
+                  <div className=" text-blueGray-500 text-lg leading-relaxed">
                     {children}
-                  </p>
+                  </div>
                 </section>
               </div>
             </div>

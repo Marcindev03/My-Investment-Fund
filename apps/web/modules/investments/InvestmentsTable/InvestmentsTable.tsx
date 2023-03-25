@@ -65,6 +65,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
               <tr>
                 {TABLE_COLUMNS.map(({ name }) => (
                   <th
+                    key={`investments_table_column_${name}`}
                     className={
                       "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
                       (color === "light"
@@ -90,7 +91,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                     adminConfirmed,
                   },
                 }) => (
-                  <tr key={`investments_table_item-${id}`}>
+                  <tr key={`investments_table_item_${id}`}>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {amount}
                     </td>

@@ -59,6 +59,7 @@ export const ClientsTable: FC<ClientsTableProps> = ({
               <tr>
                 {TABLE_COLUMNS.map(({ name }) => (
                   <th
+                    key={`clients_table_column_${name}`}
                     className={
                       "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
                       (color === "light"
