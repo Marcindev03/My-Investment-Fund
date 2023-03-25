@@ -66,3 +66,6 @@ yarn start:web
 ```bash
 yarn start:backend
 ```
+
+## Project Notion Board
+https://tourmaline-year-f8e.notion.site/c2c0d110ca68417885a2dd2fd014ab6a?v=63dc43c18b2d49d2b54dd19381c7cb5e
