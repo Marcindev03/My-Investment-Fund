@@ -16,6 +16,7 @@ export const operationsApiSlice = apiSlice.injectEndpoints({
       query: ({ amount, type, clientId }) => ({
         url: "/operations",
         method: "POST",
+        credentials: "include",
         body: {
           data: {
             amount,

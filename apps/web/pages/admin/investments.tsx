@@ -1,15 +1,29 @@
 import Admin from "layouts/Admin";
-import { InvestmentsTable } from "modules/investments";
+import { InvestmentModal, InvestmentsTable } from "modules/investments";
 import Head from "next/head";
 import { wrapper } from "store";
 import {
   getInvestments,
   getRunningQueriesThunk,
+  useAddInvestmentMutation,
   useGetInvestmentsQuery,
 } from "store/features/investments/investmentsApiSlice";
+import { useModal } from "ui";
 
 export default function Dashboard() {
   const { data } = useGetInvestmentsQuery();
+  const [addInvestment] = useAddInvestmentMutation();
+
+  const { isOpen, onClose, onOpen } = useModal();
+
+  const handleAddNewInvestment = (
+    amount: number,
+    exchangeRate: number,
+    clientId: number,
+    currencyId: number
+  ) => {
+    addInvestment({ amount, exchangeRate, clientId, currencyId });
+  };
 
   return (
     <>
@@ -17,7 +31,15 @@ export default function Dashboard() {
         <title>Admin - Investments</title>
       </Head>
       <div className="flex flex-wrap mt-4">
-        <InvestmentsTable investments={data?.data.slice(0, 10) ?? []} />
+        <InvestmentsTable
+          investments={data?.data.slice(0, 10) ?? []}
+          onRequestButtonClick={onOpen}
+        />
+        <InvestmentModal
+          isOpen={isOpen}
+          onClose={onClose}
+          onConfirm={handleAddNewInvestment}
+        />
       </div>
     </>
   );

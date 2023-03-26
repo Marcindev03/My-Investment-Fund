@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Investment } from "types";
 import ClassNames from "classnames";
+import { Button } from "ui";
 
 const TABLE_COLUMNS = [
   {
@@ -30,12 +31,14 @@ type InvestmentsTableProps = {
   investments: Investment[];
   title?: string;
   color?: "light" | "dark";
+  onRequestButtonClick?: () => void;
 };
 
 export const InvestmentsTable: FC<InvestmentsTableProps> = ({
   investments,
   title = "Investments",
   color = "light",
+  onRequestButtonClick,
 }) => {
   return (
     <>
@@ -57,6 +60,13 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                 {title}
               </h3>
             </div>
+            {!!onRequestButtonClick && (
+              <div>
+                <Button primary onClick={onRequestButtonClick}>
+                  Request Investment
+                </Button>
+              </div>
+            )}
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
