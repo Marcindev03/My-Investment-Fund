@@ -40,7 +40,7 @@ yarn dev
 yarn seed_all
 ```
 7. Configure backend. Open strapi administration panel on http://localhost:1337/admin and register admin account. <br> Then navigate to http://localhost:1337/admin/settings/users-permissions/roles and check every permission for `Admin`, `Authenticated` and `Public`. <br>
-http://localhost:1337/admin/content-manager/collectionType/plugin::users-permissions.user create user by clicking create new entry button. Add `Admin` role to this new user <br>
+http://localhost:1337/admin/content-manager/collectionType/plugin::users-permissions.user create user by clicking create new entry button. Add `Admin` role to this new user. <br>
 Same here with client http://localhost:1337/admin/content-manager/collectionType/api::client.client. When creating client add relation with investments, operations and user you've just created. 
 8. Now you can go and login into web app http://localhost:3000/auth/login Use email and password from user you created in step 7
 
