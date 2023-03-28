@@ -20,7 +20,7 @@ export const Button: FC<ButtonProps> = ({
   onClick,
 }) => {
   const buttonClassName = ClassNames(
-    "font-bold py-3 uppercase rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150",
+    "bg-white active:bg-gray-200 text-black font-bold py-3 uppercase rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150",
     {
       "bg-blueGray-800 text-white active:bg-blueGray-600": primary,
       "inline-flex items-center justify-center": isLoading,

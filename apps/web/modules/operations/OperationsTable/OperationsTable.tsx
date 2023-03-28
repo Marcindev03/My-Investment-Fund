@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Operation } from "types";
+import { Operation, TableProps } from "types";
 import { BASE_CURRENCY } from "ui/constants";
 import ClassNames from "classnames";
 import { Button } from "ui";
@@ -23,20 +23,21 @@ const TABLE_COLUMNS = [
   {
     name: "Admin Confirmed",
   },
+  {
+    name: "Actions",
+  },
 ];
 
 type OperationsTableProps = {
   operations: Operation[];
-  title?: string;
-  color?: "light" | "dark";
-  onRequestButtonClick?: () => void;
-};
+} & TableProps;
 
 export const OperationsTable: FC<OperationsTableProps> = ({
   operations,
   title = "Operations",
   color = "light",
   onRequestButtonClick,
+  onConfirmButtonClick,
 }) => {
   return (
     <>
@@ -135,9 +136,17 @@ export const OperationsTable: FC<OperationsTableProps> = ({
                       ></i>{" "}
                       {adminConfirmed ? "confirmed" : "pending"}
                     </td>
-                    {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                    <TableDropdown />
-                  </td> */}
+                    {!!onConfirmButtonClick && (
+                      <td className="p-3 w-28">
+                        <Button
+                          size="sm"
+                          primary={color !== "dark"}
+                          onClick={() => onConfirmButtonClick(id)}
+                        >
+                          Confirm
+                        </Button>
+                      </td>
+                    )}
                   </tr>
                 )
               )}

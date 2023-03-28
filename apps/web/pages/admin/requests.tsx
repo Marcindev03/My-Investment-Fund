@@ -17,6 +17,8 @@ export default function Dashboard() {
 
   const handleConfirmInvestmentRequest = (investmentId: number) => {};
 
+  const handleConfirmOperationRequest = (investmentId: number) => {};
+
   return (
     <>
       <Head>
@@ -32,6 +34,7 @@ export default function Dashboard() {
           title="Operations To Confirm"
           color="dark"
           operations={operationsRequests?.data.slice(0, 5) ?? []}
+          onConfirmButtonClick={handleConfirmOperationRequest}
         />
       </div>
     </>

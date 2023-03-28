@@ -43,3 +43,10 @@ export type Confirmation = {
   adminConfirmed: boolean;
   userConfirmed: boolean;
 };
+
+export type TableProps = {
+  title?: string;
+  color?: "light" | "dark";
+  onRequestButtonClick?: () => void;
+  onConfirmButtonClick?: (entityId: number) => void;
+};

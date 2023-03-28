@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Investment } from "types";
+import { Investment, TableProps } from "types";
 import ClassNames from "classnames";
 import { Button } from "ui";
 import { InvestmentsTableColumn } from "./components";
@@ -33,11 +33,7 @@ const TABLE_COLUMNS = [
 
 type InvestmentsTableProps = {
   investments: Investment[];
-  title?: string;
-  color?: "light" | "dark";
-  onRequestButtonClick?: () => void;
-  onConfirmButtonClick?: (investmentId: number) => void;
-};
+} & TableProps;
 
 export const InvestmentsTable: FC<InvestmentsTableProps> = ({
   investments,
@@ -154,7 +150,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                       {adminConfirmed ? "confirmed" : "pending"}
                     </td>
                     {!!onConfirmButtonClick && (
-                      <td className="pr-6">
+                      <td className="p-3 w-28">
                         <Button
                           size="sm"
                           primary={color !== "dark"}
