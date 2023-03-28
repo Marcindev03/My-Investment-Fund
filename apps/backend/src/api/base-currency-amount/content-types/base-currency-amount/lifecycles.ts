@@ -1,25 +1,15 @@
+import { getCurrenciesValue, updateBaseCurrencyValue } from "../../../../lib";
+
 export default {
   async afterUpdate(event) {
-    const { result } = event;
+    const {
+      result: { value: newBaseCurrencyAmount },
+    } = event;
 
-    const { value: baseCurrencyValue, id } = await strapi.db
-      .query("api::base-currency-value.base-currency-value")
-      .findOne({
-        select: ["id", "value"],
-      });
+    const { value: currenciesValue } = await getCurrenciesValue();
 
-    // TODO add value from other currencies
-    const newCurrencyValue = result.value;
+    const newBaseCurrencyValue = currenciesValue + newBaseCurrencyAmount;
 
-    await strapi.db
-      .query("api::base-currency-value.base-currency-value")
-      .update({
-        where: {
-          id,
-        },
-        data: {
-          value: newCurrencyValue,
-        },
-      });
+    await updateBaseCurrencyValue(newBaseCurrencyValue);
   },
 };

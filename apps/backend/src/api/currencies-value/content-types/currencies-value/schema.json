@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "currencies_values",
+  "info": {
+    "singularName": "currencies-value",
+    "pluralName": "currencies-values",
+    "displayName": "Currencies Value",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "value": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    }
+  }
+}
