@@ -21,11 +21,25 @@ export const requestsApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: `/investments?${query}`,
       }),
+      providesTags: ["RequestsInvestments"],
     }),
     getOperationsRequests: builder.query<OperationsResponse, void>({
       query: () => ({
         url: `/operations?${query}`,
       }),
+    }),
+    confirmInvestmentRequest: builder.mutation<void, number>({
+      query: (investmentId) => ({
+        url: `/investments/${investmentId}`,
+        method: "PUT",
+        credentials: "include",
+        body: {
+          data: {
+            adminConfirmed: true,
+          },
+        },
+      }),
+      invalidatesTags: ["RequestsInvestments"],
     }),
   }),
 });
@@ -33,6 +47,7 @@ export const requestsApiSlice = apiSlice.injectEndpoints({
 export const {
   useGetInvestmentsRequestsQuery,
   useGetOperationsRequestsQuery,
+  useConfirmInvestmentRequestMutation,
   util: { getRunningQueriesThunk },
 } = requestsApiSlice;
 

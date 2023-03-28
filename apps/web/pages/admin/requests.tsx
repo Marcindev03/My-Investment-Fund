@@ -5,6 +5,7 @@ import {
   getInvestmentsRequests,
   getOperationsRequests,
   getRunningQueriesThunk,
+  useConfirmInvestmentRequestMutation,
   useGetInvestmentsRequestsQuery,
   useGetOperationsRequestsQuery,
 } from "store/features/requests/requestsApiSlice";
@@ -15,7 +16,10 @@ export default function Dashboard() {
   const { data: investmentsRequests } = useGetInvestmentsRequestsQuery();
   const { data: operationsRequests } = useGetOperationsRequestsQuery();
 
-  const handleConfirmInvestmentRequest = (investmentId: number) => {};
+  const [confirmInvestmentRequest] = useConfirmInvestmentRequestMutation();
+
+  const handleConfirmInvestmentRequest = (investmentId: number) =>
+    confirmInvestmentRequest(investmentId);
 
   const handleConfirmOperationRequest = (investmentId: number) => {};
 
