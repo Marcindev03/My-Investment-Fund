@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Investment } from "types";
 import ClassNames from "classnames";
 import { Button } from "ui";
+import { InvestmentsTableColumn } from "./components";
 
 const TABLE_COLUMNS = [
   {
@@ -25,6 +26,9 @@ const TABLE_COLUMNS = [
   {
     name: "Admin Confirmed",
   },
+  {
+    name: "Actions",
+  },
 ];
 
 type InvestmentsTableProps = {
@@ -32,6 +36,7 @@ type InvestmentsTableProps = {
   title?: string;
   color?: "light" | "dark";
   onRequestButtonClick?: () => void;
+  onConfirmButtonClick?: (investmentId: number) => void;
 };
 
 export const InvestmentsTable: FC<InvestmentsTableProps> = ({
@@ -39,6 +44,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
   title = "Investments",
   color = "light",
   onRequestButtonClick,
+  onConfirmButtonClick,
 }) => {
   return (
     <>
@@ -74,17 +80,23 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
             <thead>
               <tr>
                 {TABLE_COLUMNS.map(({ name }) => (
-                  <th
-                    key={`investments_table_column_${name}`}
-                    className={
-                      "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                      (color === "light"
-                        ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                        : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                    }
-                  >
-                    {name}
-                  </th>
+                  <>
+                    {name !== "Actions" ? (
+                      <InvestmentsTableColumn
+                        key={`investments_table_column_${name}`}
+                        name={name}
+                        color={color}
+                      />
+                    ) : (
+                      !!onConfirmButtonClick && (
+                        <InvestmentsTableColumn
+                          key={`investments_table_column_${name}`}
+                          name={name}
+                          color={color}
+                        />
+                      )
+                    )}
+                  </>
                 ))}
               </tr>
             </thead>
@@ -141,9 +153,17 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                       ></i>{" "}
                       {adminConfirmed ? "confirmed" : "pending"}
                     </td>
-                    {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                      <TableDropdown />
-                    </td> */}
+                    {!!onConfirmButtonClick && (
+                      <td className="pr-6">
+                        <Button
+                          size="sm"
+                          primary={color !== "dark"}
+                          onClick={() => onConfirmButtonClick(id)}
+                        >
+                          Confirm
+                        </Button>
+                      </td>
+                    )}
                   </tr>
                 )
               )}

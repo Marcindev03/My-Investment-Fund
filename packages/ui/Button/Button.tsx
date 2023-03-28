@@ -4,6 +4,7 @@ import { CgSpinner } from "react-icons/cg";
 
 type ButtonProps = {
   primary?: boolean;
+  size?: "sm" | "md" | "lg";
   disabled?: boolean;
   isLoading?: boolean;
   children: ReactNode;
@@ -14,15 +15,19 @@ export const Button: FC<ButtonProps> = ({
   primary = false,
   disabled = false,
   isLoading = false,
+  size = "md",
   children,
   onClick,
 }) => {
   const buttonClassName = ClassNames(
-    "text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150",
+    "font-bold py-3 uppercase rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150",
     {
       "bg-blueGray-800 text-white active:bg-blueGray-600": primary,
       "inline-flex items-center justify-center": isLoading,
       "opacity-50": disabled,
+      "text-xs": size === "sm",
+      "text-sm px-6": size === "md",
+      "text-base px-6": size === "lg",
     }
   );
 

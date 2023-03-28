@@ -15,6 +15,8 @@ export default function Dashboard() {
   const { data: investmentsRequests } = useGetInvestmentsRequestsQuery();
   const { data: operationsRequests } = useGetOperationsRequestsQuery();
 
+  const handleConfirmInvestmentRequest = (investmentId: number) => {};
+
   return (
     <>
       <Head>
@@ -24,6 +26,7 @@ export default function Dashboard() {
         <InvestmentsTable
           title="Investments To Confirm"
           investments={investmentsRequests?.data.slice(0, 5) ?? []}
+          onConfirmButtonClick={handleConfirmInvestmentRequest}
         />
         <OperationsTable
           title="Operations To Confirm"

@@ -519,9 +519,7 @@ video {
       [type='password'],
       [type='number'],
       [type='date'],
-      [type='month'],
       [type='time'],
-      [type='week'],
       [multiple],
       textarea,
       select
@@ -541,7 +539,7 @@ video {
   line-height: 1.5rem;
 }
 
-[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='month']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='time']:focus, [multiple]:focus, textarea:focus, select:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
   --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
@@ -1960,10 +1958,6 @@ select {
   padding-bottom: 0.5rem;
 }
 
-.pr-4 {
-  padding-right: 1rem;
-}
-
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -1974,6 +1968,10 @@ select {
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
 }
 
 .pb-6 {
