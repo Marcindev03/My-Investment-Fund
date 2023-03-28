@@ -1,6 +1,6 @@
 import qs from "qs";
 import { apiSlice } from "store/api/apiSlice";
-import { ClientsResponse } from "types/client";
+import { ClientResponse, ClientsResponse } from "types/client";
 
 const query = qs.stringify(
   {
@@ -18,11 +18,40 @@ export const clientsApiSlice = apiSlice.injectEndpoints({
         url: `/clients?${query}`,
       }),
     }),
+    addClient: builder.mutation<ClientResponse, void>({
+      query: () => ({
+        url: "/clients",
+        method: "POST",
+        credentials: "include",
+        body: {
+          data: {
+            baseCurrencyValue: 0,
+          },
+        },
+      }),
+    }),
+    updateClient: builder.mutation<
+      ClientResponse,
+      { clientId: number; userId: number }
+    >({
+      query: ({ clientId, userId }) => ({
+        url: `/clients/${clientId}`,
+        method: "PUT",
+        credentials: "include",
+        body: {
+          data: {
+            user: userId,
+          },
+        },
+      }),
+    }),
   }),
 });
 
 export const {
   useGetClientsQuery,
+  useAddClientMutation,
+  useUpdateClientMutation,
   util: { getRunningQueriesThunk },
 } = clientsApiSlice;
 

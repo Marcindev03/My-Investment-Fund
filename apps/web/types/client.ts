@@ -1,4 +1,4 @@
-import { Entity, ArrayResponse } from "types";
+import { Entity, ArrayResponse, SingleResponse } from "types";
 import { UsersPermissionsUser } from "./usersPermissionUser";
 
 export type Client = Entity<{
@@ -9,3 +9,5 @@ export type Client = Entity<{
 }>;
 
 export type ClientsResponse = ArrayResponse<Client>;
+
+export type ClientResponse = SingleResponse<Client>;

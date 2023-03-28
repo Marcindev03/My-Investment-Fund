@@ -1,4 +1,4 @@
-import { Entity } from "types";
+import { Entity, SingleResponse } from "types";
 
 export type UsersPermissionsUser = Entity<{
   username: string;
@@ -9,3 +9,5 @@ export type UsersPermissionsUser = Entity<{
   firstName: string;
   lastName: string;
 }>;
+
+export type UsersPermissionsUserResponse = SingleResponse<UsersPermissionsUser>;

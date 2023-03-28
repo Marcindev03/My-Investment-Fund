@@ -1,4 +1,5 @@
 import { apiSlice } from "store/api/apiSlice";
+import { UsersPermissionsUserResponse } from "types";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -16,7 +17,25 @@ export const authApiSlice = apiSlice.injectEndpoints({
         credentials: "include",
       }),
     }),
+    registerUser: builder.mutation<
+      UsersPermissionsUserResponse,
+      { firstName: string; lastName: string; email: string; password: string }
+    >({
+      query: ({ firstName, lastName, email, password }) => ({
+        url: "/auth/local/register",
+        method: "POST",
+        credentials: "include",
+        body: {
+          body: {
+            username: `${firstName} ${lastName}`,
+            email: email,
+            password: password,
+          },
+        },
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useMeQuery } = authApiSlice;
+export const { useLoginMutation, useMeQuery, useRegisterUserMutation } =
+  authApiSlice;
