@@ -3,6 +3,7 @@ import { Operation, TableProps } from "types";
 import { BASE_CURRENCY } from "ui/constants";
 import ClassNames from "classnames";
 import { Button } from "ui";
+import { OperationsTableColumn } from "./components";
 
 const TABLE_COLUMNS = [
   {
@@ -73,17 +74,23 @@ export const OperationsTable: FC<OperationsTableProps> = ({
             <thead>
               <tr>
                 {TABLE_COLUMNS.map(({ name }) => (
-                  <th
-                    key={`operation_table_column_${name}`}
-                    className={
-                      "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                      (color === "light"
-                        ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                        : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                    }
-                  >
-                    {name}
-                  </th>
+                  <>
+                    {name !== "Actions" ? (
+                      <OperationsTableColumn
+                        key={`operations_table_column_${name}`}
+                        name={name}
+                        color={color}
+                      />
+                    ) : (
+                      !!onConfirmButtonClick && (
+                        <OperationsTableColumn
+                          key={`operations_table_column_${name}`}
+                          name={name}
+                          color={color}
+                        />
+                      )
+                    )}
+                  </>
                 ))}
               </tr>
             </thead>
