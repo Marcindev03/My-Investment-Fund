@@ -1,5 +1,5 @@
 import { apiSlice } from "store/api/apiSlice";
-import { UsersPermissionsUserResponse } from "types";
+import { UsersPermissionsUser } from "types";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -18,7 +18,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     registerUser: builder.mutation<
-      UsersPermissionsUserResponse,
+      { jwt: string; user: UsersPermissionsUser },
       { firstName: string; lastName: string; email: string; password: string }
     >({
       query: ({ firstName, lastName, email, password }) => ({
@@ -26,11 +26,11 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         credentials: "include",
         body: {
-          body: {
-            username: `${firstName} ${lastName}`,
-            email: email,
-            password: password,
-          },
+          firstName,
+          lastName,
+          username: `${firstName} ${lastName}`,
+          email: email,
+          password: password,
         },
       }),
     }),

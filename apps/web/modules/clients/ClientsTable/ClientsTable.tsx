@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Client } from "types/client";
+import { Button } from "ui";
 import { BASE_CURRENCY } from "ui/constants";
 
 const TABLE_COLUMNS = [
@@ -24,12 +25,14 @@ type ClientsTableProps = {
   clients: Client[];
   title?: string;
   color?: "light" | "dark";
+  onAddClientButtonClick: () => void;
 };
 
 export const ClientsTable: FC<ClientsTableProps> = ({
   clients,
   title = "Clients",
   color = "light",
+  onAddClientButtonClick,
 }) => {
   return (
     <>
@@ -50,6 +53,11 @@ export const ClientsTable: FC<ClientsTableProps> = ({
               >
                 {title}
               </h3>
+            </div>
+            <div>
+              <Button primary onClick={onAddClientButtonClick}>
+                Add client
+              </Button>
             </div>
           </div>
         </div>

@@ -27,6 +27,7 @@ export const apiSlice = createApi({
     "BaseCurrencyAmount",
     "RequestsInvestments",
     "RequestsOperation",
+    "Clients",
   ],
   endpoints: (builder) => ({}),
 });

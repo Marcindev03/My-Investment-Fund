@@ -17,33 +17,21 @@ export const clientsApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: `/clients?${query}`,
       }),
+      providesTags: ["Clients"],
     }),
-    addClient: builder.mutation<ClientResponse, void>({
-      query: () => ({
+    addClient: builder.mutation<ClientResponse, number>({
+      query: (userId) => ({
         url: "/clients",
         method: "POST",
         credentials: "include",
         body: {
           data: {
             baseCurrencyValue: 0,
+            users_permissions_user: userId,
           },
         },
       }),
-    }),
-    updateClient: builder.mutation<
-      ClientResponse,
-      { clientId: number; userId: number }
-    >({
-      query: ({ clientId, userId }) => ({
-        url: `/clients/${clientId}`,
-        method: "PUT",
-        credentials: "include",
-        body: {
-          data: {
-            user: userId,
-          },
-        },
-      }),
+      invalidatesTags: ["Clients"],
     }),
   }),
 });
@@ -51,7 +39,6 @@ export const clientsApiSlice = apiSlice.injectEndpoints({
 export const {
   useGetClientsQuery,
   useAddClientMutation,
-  useUpdateClientMutation,
   util: { getRunningQueriesThunk },
 } = clientsApiSlice;
 
