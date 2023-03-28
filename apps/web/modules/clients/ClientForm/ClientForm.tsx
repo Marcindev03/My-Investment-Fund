@@ -1,6 +1,8 @@
+import { generatePassword } from "helpers";
 import { FC, useMemo, useState } from "react";
-import { FormControl, Input } from "ui";
+import { Button, FormControl, Input } from "ui";
 import { EMAIL_REGEX } from "ui/constants";
+import { useCopyToClipboard } from "usehooks-ts";
 
 type ClientFormProps = {
   onSubmit: (
@@ -16,7 +18,9 @@ export const ClientForm: FC<ClientFormProps> = ({ onSubmit, onReject }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("admin123QAZ!@#");
+  const [password, setPassword] = useState(generatePassword());
+
+  const [value, copy] = useCopyToClipboard();
 
   const handleFormSubmit = () => {
     if (isFirstNameValid && isLastNameValid && isEmailValid) {
@@ -38,7 +42,7 @@ export const ClientForm: FC<ClientFormProps> = ({ onSubmit, onReject }) => {
   );
 
   return (
-    <form className="flex-col">
+    <form className="flex-col" onSubmit={(e) => e.preventDefault()}>
       <FormControl
         isInvalid={!isFirstNameValid}
         errorMessage="First Name must be at least 3 charachters length"
@@ -67,6 +71,20 @@ export const ClientForm: FC<ClientFormProps> = ({ onSubmit, onReject }) => {
         labelTitle={"Email"}
       >
         <Input value={email} onChange={setEmail} placeholder="Enter email" />
+      </FormControl>
+      <FormControl labelTitle={"Password"}>
+        <div className="flex items-center justify-center">
+          <Input
+            value={password}
+            onChange={() => {}}
+            placeholder="Enter email"
+          />
+          <div className="ml-6">
+            <Button primary onClick={() => copy(password)}>
+              Copy
+            </Button>
+          </div>
+        </div>
       </FormControl>
       <section className="flex items-center justify-end pt-6 rounded-b">
         <button
