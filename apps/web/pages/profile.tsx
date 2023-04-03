@@ -1,5 +1,6 @@
 import Navbar from "components/Navbars/AuthNavbar";
 import Footer from "components/Footers/Footer.js";
+import Image from "next/image";
 
 export default function Profile() {
   return (
@@ -46,7 +47,7 @@ export default function Profile() {
                 <div className="flex flex-wrap justify-center">
                   <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                     <div className="relative">
-                      <img
+                      <Image
                         alt="..."
                         src="/img/team-2-800x800.jpg"
                         className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"

@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 export default function Error() {
   const router = useRouter();
 
-  useEffect(() => {
-    router.push("/");
-  }, []);
+  // useEffect(() => {
+  //   router.push("/");
+  // }, [router]);
 
-  return null;
+  // TODO nextjs error page
+  return <h1>Error occured</h1>;
 }

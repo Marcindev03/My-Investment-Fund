@@ -10,7 +10,7 @@ export default function Error() {
     }, 3000);
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [router]);
 
   return <p>This page does not exist</p>;
 }

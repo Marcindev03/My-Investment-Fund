@@ -1,4 +1,5 @@
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
+import Image from "next/image";
 import { FC } from "react";
 
 type CardTableProps = {
@@ -96,11 +97,11 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
             <tbody>
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                  <img
+                  <Image
                     src="/img/bootstrap.jpg"
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
-                  ></img>{" "}
+                  ></Image>{" "}
                   <span
                     className={
                       "ml-3 font-bold " +
@@ -118,26 +119,26 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
-                    <img
+                    <Image
                       src="/img/team-1-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-2-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-3-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-4-470x470.png"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
+                    ></Image>
                   </div>
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -159,11 +160,11 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
               </tr>
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                  <img
+                  <Image
                     src="/img/angular.jpg"
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
-                  ></img>{" "}
+                  ></Image>{" "}
                   <span
                     className={
                       "ml-3 font-bold " +
@@ -182,26 +183,26 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
-                    <img
+                    <Image
                       src="/img/team-1-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-2-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-3-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-4-470x470.png"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
+                    ></Image>
                   </div>
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -223,11 +224,11 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
               </tr>
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                  <img
+                  <Image
                     src="/img/sketch.jpg"
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
-                  ></img>{" "}
+                  ></Image>{" "}
                   <span
                     className={
                       "ml-3 font-bold " +
@@ -245,26 +246,26 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
-                    <img
+                    <Image
                       src="/img/team-1-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-2-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-3-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-4-470x470.png"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
+                    ></Image>
                   </div>
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -286,11 +287,11 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
               </tr>
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                  <img
+                  <Image
                     src="/img/react.jpg"
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
-                  ></img>{" "}
+                  ></Image>{" "}
                   <span
                     className={
                       "ml-3 font-bold " +
@@ -309,26 +310,26 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
-                    <img
+                    <Image
                       src="/img/team-1-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-2-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-3-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-4-470x470.png"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
+                    ></Image>
                   </div>
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -350,11 +351,11 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
               </tr>
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                  <img
+                  <Image
                     src="/img/vue.jpg"
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
-                  ></img>{" "}
+                  ></Image>{" "}
                   <span
                     className={
                       "ml-3 font-bold " +
@@ -373,26 +374,26 @@ const CardTable: FC<CardTableProps> = ({ color = "light" }) => {
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
-                    <img
+                    <Image
                       src="/img/team-1-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-2-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-3-800x800.jpg"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
-                    <img
+                    ></Image>
+                    <Image
                       src="/img/team-4-470x470.png"
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
-                    ></img>
+                    ></Image>
                   </div>
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">

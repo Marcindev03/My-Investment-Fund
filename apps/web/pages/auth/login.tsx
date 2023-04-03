@@ -22,7 +22,7 @@ export default function Login() {
     if (data?.role.name === "Authenticated") {
       router.push("/user/dashboard");
     }
-  }, [data, isFetching]);
+  }, [data, isFetching, router]);
 
   const onSubmit = async (email: string, password: string) => {
     try {

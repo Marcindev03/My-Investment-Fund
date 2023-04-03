@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from "components/Navbars/AuthNavbar";
 import Footer from "components/Footers/Footer.js";
+import Image from "next/image";
 
 export default function Landing() {
   return (
@@ -115,14 +116,14 @@ export default function Landing() {
                   Working with us is a pleasure
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Don't let your uses guess by attaching tooltips and popoves to
-                  any element. Just make sure you enable them first via
-                  JavaScript.
+                  Don{`'`}t let your uses guess by attaching tooltips and
+                  popoves to any element. Just make sure you enable them first
+                  via JavaScript.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
                   The kit comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go. Just make sure you enable them first via
+                  started faster. You can change the text and images and you
+                  {`'`}re good to go. Just make sure you enable them first via
                   JavaScript.
                 </p>
                 <Link href="/" className="font-bold text-blueGray-700 mt-8">
@@ -132,7 +133,7 @@ export default function Landing() {
 
               <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
-                  <img
+                  <Image
                     alt="..."
                     src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
                     className="w-full align-middle rounded-t-lg"
@@ -188,7 +189,7 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="items-center flex flex-wrap">
               <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
-                <img
+                <Image
                   alt="..."
                   className="max-w-full rounded-lg shadow-lg"
                   src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
@@ -203,7 +204,7 @@ export default function Landing() {
                   <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
                     The extension comes with three pre-built pages to help you
                     get started faster. You can change the text and images and
-                    you're good to go.
+                    you{`'`}re good to go.
                   </p>
                   <ul className="list-none mt-6">
                     <li className="py-2">
@@ -270,7 +271,7 @@ export default function Landing() {
             <div className="flex flex-wrap">
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
-                  <img
+                  <Image
                     alt="..."
                     src="/img/team-1-800x800.jpg"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
@@ -305,7 +306,7 @@ export default function Landing() {
               </div>
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
-                  <img
+                  <Image
                     alt="..."
                     src="/img/team-2-800x800.jpg"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
@@ -334,7 +335,7 @@ export default function Landing() {
               </div>
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
-                  <img
+                  <Image
                     alt="..."
                     src="/img/team-3-800x800.jpg"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
@@ -369,7 +370,7 @@ export default function Landing() {
               </div>
               <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
-                  <img
+                  <Image
                     alt="..."
                     src="/img/team-4-470x470.png"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
@@ -456,7 +457,7 @@ export default function Landing() {
                 </h6>
                 <p className="mt-2 mb-4 text-blueGray-400">
                   Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  the bulk of the card{`'`}s content.
                 </p>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -468,7 +469,7 @@ export default function Landing() {
                 </h5>
                 <p className="mt-2 mb-4 text-blueGray-400">
                   Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  the bulk of the card{`'`}s content.
                 </p>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -480,7 +481,7 @@ export default function Landing() {
                 </h5>
                 <p className="mt-2 mb-4 text-blueGray-400">
                   Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  the bulk of the card{`'`}s content.
                 </p>
               </div>
             </div>
