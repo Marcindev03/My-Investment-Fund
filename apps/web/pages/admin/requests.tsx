@@ -6,7 +6,6 @@ import {
   getOperationsRequests,
   getRunningQueriesThunk,
   useConfirmInvestmentRequestMutation,
-  useConfirmOpeartionRequestMutation,
   useConfirmOperationRequestMutation,
   useGetInvestmentsRequestsQuery,
   useGetOperationsRequestsQuery,
@@ -15,11 +14,17 @@ import { InvestmentsTable } from "modules/investments";
 import { OperationsTable } from "modules/operations";
 
 export default function Dashboard() {
-  const { data: investmentsRequests } = useGetInvestmentsRequestsQuery();
-  const { data: operationsRequests } = useGetOperationsRequestsQuery();
+  const {
+    data: investmentsRequests,
+    isFetching: isInvestmentsRequestsFetching,
+  } = useGetInvestmentsRequestsQuery();
+  const { data: operationsRequests, isFetching: isOperationsRequestsFetching } =
+    useGetOperationsRequestsQuery();
 
-  const [confirmInvestmentRequest] = useConfirmInvestmentRequestMutation();
-  const [confirmOperationRequest] = useConfirmOperationRequestMutation();
+  const [confirmInvestmentRequest, { isLoading: isConfirmInvestmentLoading }] =
+    useConfirmInvestmentRequestMutation();
+  const [confirmOperationRequest, { isLoading: isConfirmOperationLoading }] =
+    useConfirmOperationRequestMutation();
 
   const handleConfirmInvestmentRequest = (investmentId: number) =>
     confirmInvestmentRequest(investmentId);
@@ -33,16 +38,17 @@ export default function Dashboard() {
         <title>Admin - Requests</title>
       </Head>
       <div className="flex flex-wrap mt-4">
-        <InvestmentsTable
-          title="Investments To Confirm"
-          investments={investmentsRequests?.data.slice(0, 5) ?? []}
-          onConfirmButtonClick={handleConfirmInvestmentRequest}
-        />
         <OperationsTable
           title="Operations To Confirm"
-          color="dark"
+          isLoading={isOperationsRequestsFetching || isConfirmOperationLoading}
           operations={operationsRequests?.data.slice(0, 5) ?? []}
           onConfirmButtonClick={handleConfirmOperationRequest}
+        />
+        <InvestmentsTable
+          title="Investments To Confirm"
+          color="dark"
+          investments={investmentsRequests?.data.slice(0, 5) ?? []}
+          onConfirmButtonClick={handleConfirmInvestmentRequest}
         />
       </div>
     </>

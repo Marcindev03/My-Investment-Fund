@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Operation, TableProps } from "types";
-import { BASE_CURRENCY } from "ui/constants";
 import ClassNames from "classnames";
 import { Button } from "ui";
 import { OperationsTableColumn } from "./components";
+import { OperationsTableRow } from "./components/OperationsTableRow";
 
 const TABLE_COLUMNS = [
   {
@@ -37,6 +37,7 @@ export const OperationsTable: FC<OperationsTableProps> = ({
   operations,
   title = "Operations",
   color = "light",
+  isLoading = false,
   onRequestButtonClick,
   onConfirmButtonClick,
 }) => {
@@ -94,7 +95,11 @@ export const OperationsTable: FC<OperationsTableProps> = ({
                 ))}
               </tr>
             </thead>
-            <tbody>
+            <tbody
+              className={ClassNames({
+                "animate-pulse": isLoading,
+              })}
+            >
               {operations.map(
                 ({
                   id,
@@ -106,55 +111,18 @@ export const OperationsTable: FC<OperationsTableProps> = ({
                     adminConfirmed,
                   },
                 }) => (
-                  <tr key={`operations_table_item_${id}`}>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {amount} {BASE_CURRENCY}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {type}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {date}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <div className="flex">
-                        <img
-                          src="/img/team-1-800x800.jpg"
-                          alt="..."
-                          className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
-                        ></img>
-                      </div>
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <i
-                        className={ClassNames("fas fa-circle mr-2", {
-                          "text-orange-500": !userConfirmed,
-                          "text-green-500": userConfirmed,
-                        })}
-                      ></i>{" "}
-                      {userConfirmed ? "confirmed" : "pending"}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <i
-                        className={ClassNames("fas fa-circle mr-2", {
-                          "text-orange-500": !adminConfirmed,
-                          "text-green-500": adminConfirmed,
-                        })}
-                      ></i>{" "}
-                      {adminConfirmed ? "confirmed" : "pending"}
-                    </td>
-                    {!!onConfirmButtonClick && (
-                      <td className="p-3 w-28">
-                        <Button
-                          size="sm"
-                          primary={color !== "dark"}
-                          onClick={() => onConfirmButtonClick(id)}
-                        >
-                          Confirm
-                        </Button>
-                      </td>
-                    )}
-                  </tr>
+                  <OperationsTableRow
+                    key={`operations_table_item_${id}`}
+                    id={id}
+                    amount={amount}
+                    type={type}
+                    date={date}
+                    color={color}
+                    userConfirmed={userConfirmed}
+                    adminConfirmed={adminConfirmed}
+                    isLoading={isLoading}
+                    onConfirmButtonClick={onConfirmButtonClick}
+                  />
                 )
               )}
             </tbody>

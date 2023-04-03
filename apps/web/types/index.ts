@@ -47,6 +47,7 @@ export type Confirmation = {
 export type TableProps = {
   title?: string;
   color?: "light" | "dark";
+  isLoading?: boolean;
   onRequestButtonClick?: () => void;
   onConfirmButtonClick?: (entityId: number) => void;
 };

@@ -5,3 +5,5 @@ export * from "./LoginForm";
 export * from "./Modal";
 export * from "./NumberInput";
 export * from "./Select";
+export * from "./Skeleton";
+export * from "./Table";
