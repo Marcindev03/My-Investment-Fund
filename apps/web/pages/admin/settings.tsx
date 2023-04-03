@@ -1,5 +1,5 @@
-import CardSettings from "components/Cards/CardSettings.js";
-import CardProfile from "components/Cards/CardProfile.js";
+import CardSettings from "components/Cards/CardSettings";
+import CardProfile from "components/Cards/CardProfile";
 import Admin from "layouts/Admin";
 
 export default function Settings() {

@@ -1,4 +1,4 @@
-import MapExample from "components/Maps/MapExample.js";
+import MapExample from "components/Maps/MapExample";
 import Admin from "layouts/Admin";
 
 export default function Maps() {

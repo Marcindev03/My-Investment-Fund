@@ -1,16 +1,19 @@
-import { createRef, useState } from "react";
+import { useRef, useState } from "react";
 import { createPopper } from "@popperjs/core";
 import Image from "next/image";
 
 const UserDropdown = () => {
-  // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
-  const btnDropdownRef = createRef();
-  const popoverDropdownRef = createRef();
+  const btnDropdownRef = useRef<HTMLAnchorElement>(null);
+  const popoverDropdownRef = useRef<HTMLDivElement>(null);
   const openDropdownPopover = () => {
-    createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
-      placement: "bottom-start",
-    });
+    createPopper(
+      btnDropdownRef.current as Element,
+      popoverDropdownRef.current as HTMLElement,
+      {
+        placement: "bottom-start",
+      }
+    );
     setDropdownPopoverShow(true);
   };
   const closeDropdownPopover = () => {

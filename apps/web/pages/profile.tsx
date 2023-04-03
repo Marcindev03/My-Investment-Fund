@@ -1,5 +1,5 @@
 import Navbar from "components/Navbars/AuthNavbar";
-import Footer from "components/Footers/Footer.js";
+import Footer from "components/Footers/Footer";
 import Image from "next/image";
 
 export default function Profile() {

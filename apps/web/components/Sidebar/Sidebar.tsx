@@ -1,8 +1,8 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
-import UserDropdown from "components/Dropdowns/UserDropdown.js";
+import NotificationDropdown from "components/Dropdowns/NotificationDropdown";
+import UserDropdown from "components/Dropdowns/UserDropdown";
 import { APP_NAME_SHORTCUT, SHARED_SIDEBAR_ITEMS } from "mocks/data";
 import {
   BsChevronDoubleLeft,

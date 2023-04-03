@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import ClassNames from "classnames";
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Sidebar from "components/Sidebar/Sidebar";
-import FooterAdmin from "components/Footers/FooterAdmin.js";
+import FooterAdmin from "components/Footers/FooterAdmin";
 import {
   useGetBaseCurrencyAmountQuery,
   useGetBaseCurrencyValueQuery,

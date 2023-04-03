@@ -1,4 +1,4 @@
-import TableDropdown from "components/Dropdowns/TableDropdown.js";
+import TableDropdown from "components/Dropdowns/TableDropdown";
 import Image from "next/image";
 import { FC } from "react";
 
