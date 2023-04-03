@@ -1,14 +1,21 @@
 import { FC, ReactNode, useState } from "react";
+import dynamic from "next/dynamic";
 import ClassNames from "classnames";
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Sidebar from "components/Sidebar/Sidebar";
-import HeaderStats from "components/Headers/HeaderStats";
 import FooterAdmin from "components/Footers/FooterAdmin.js";
 import {
   useGetBaseCurrencyAmountQuery,
   useGetBaseCurrencyValueQuery,
   useGetMostValuableCurrenciesQuery,
 } from "store/features/dashboard/dashboardApiSlice";
+
+const DynamicHeaderStats = dynamic(
+  () => import("components/Headers/HeaderStats"),
+  {
+    ssr: false,
+  }
+);
 
 type AdminProps = {
   children: ReactNode;
@@ -35,7 +42,7 @@ const Admin: FC<AdminProps> = ({ children }) => {
         )}
       >
         <AdminNavbar />
-        <HeaderStats
+        <DynamicHeaderStats
           baseCurrencyValue={baseCurrencyValueData?.data?.attributes.value ?? 0}
           baseCurrencyAmount={
             baseCurrencyAmountData?.data?.attributes?.value ?? 0
