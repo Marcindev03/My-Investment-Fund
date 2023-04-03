@@ -9,13 +9,7 @@ import {
   useGetBaseCurrencyValueQuery,
   useGetMostValuableCurrenciesQuery,
 } from "store/features/dashboard/dashboardApiSlice";
-
-const DynamicHeaderStats = dynamic(
-  () => import("components/Headers/HeaderStats"),
-  {
-    ssr: false,
-  }
-);
+import HeaderStats from "components/Headers/HeaderStats";
 
 type AdminProps = {
   children: ReactNode;
@@ -42,7 +36,7 @@ const Admin: FC<AdminProps> = ({ children }) => {
         )}
       >
         <AdminNavbar />
-        <DynamicHeaderStats
+        <HeaderStats
           baseCurrencyValue={baseCurrencyValueData?.data?.attributes.value ?? 0}
           baseCurrencyAmount={
             baseCurrencyAmountData?.data?.attributes?.value ?? 0

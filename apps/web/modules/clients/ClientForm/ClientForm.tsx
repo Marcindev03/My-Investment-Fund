@@ -2,7 +2,6 @@ import { generatePassword } from "helpers";
 import { FC, useMemo, useState } from "react";
 import { Button, FormControl, Input } from "ui";
 import { EMAIL_REGEX } from "ui/constants";
-import { useCopyToClipboard } from "usehooks-ts";
 
 type ClientFormProps = {
   onSubmit: (
@@ -19,8 +18,6 @@ export const ClientForm: FC<ClientFormProps> = ({ onSubmit, onReject }) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(generatePassword());
-
-  const [value, copy] = useCopyToClipboard();
 
   const handleFormSubmit = () => {
     if (isFirstNameValid && isLastNameValid && isEmailValid) {
@@ -80,7 +77,10 @@ export const ClientForm: FC<ClientFormProps> = ({ onSubmit, onReject }) => {
             placeholder="Enter email"
           />
           <div className="ml-6">
-            <Button primary onClick={() => copy(password)}>
+            <Button
+              primary
+              onClick={() => navigator.clipboard.writeText(password)}
+            >
               Copy
             </Button>
           </div>
