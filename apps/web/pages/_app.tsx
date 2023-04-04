@@ -5,6 +5,7 @@ import { NOTUS_MESSAGE } from "../mocks/data";
 import { wrapper } from "store";
 import { Provider } from "react-redux";
 
+import "react-toastify/dist/ReactToastify.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../styles/index.css";
 import "../styles/tailwind.css";

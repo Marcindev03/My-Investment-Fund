@@ -1,14 +1,11 @@
 import { FC, useMemo, useState } from "react";
 import { useGetClientsQuery } from "store/features/clients/clientsApiSlice";
+import { AddOperationArgs } from "store/features/operations/operationsApiSlice";
 import { OperationType } from "types";
 import { FormControl, NumberInput, Option, Select } from "ui";
 
 type OperationFormProps = {
-  onSubmit: (
-    amount: number,
-    operationType: OperationType,
-    clientId: string
-  ) => void;
+  onSubmit: (obj: AddOperationArgs) => void;
   onReject: () => void;
 };
 
@@ -24,7 +21,7 @@ export const OperationForm: FC<OperationFormProps> = ({
 
   const handleFormSubmit = () => {
     if (isAmountValid && isClientIdValid) {
-      onSubmit(amount, operationType, clientId);
+      onSubmit({ amount, type: operationType, clientId: +clientId });
     }
   };
 
@@ -60,7 +57,7 @@ export const OperationForm: FC<OperationFormProps> = ({
     ) ?? [];
 
   return (
-    <form className="flex-col">
+    <form className="flex-col" onSubmit={(e) => e.preventDefault()}>
       <FormControl
         isInvalid={!isAmountValid}
         errorMessage="Amount must be greater than 0"

@@ -6,32 +6,18 @@ import {
   getOperationsRequests,
   getRunningQueriesThunk,
   useConfirmInvestmentRequestMutation,
-  useConfirmOperationRequestMutation,
   useGetInvestmentsRequestsQuery,
-  useGetOperationsRequestsQuery,
 } from "store/features/requests/requestsApiSlice";
 import { InvestmentsTable } from "modules/investments";
 import { OperationsTable } from "modules/operations";
 
 export default function Dashboard() {
   const {
-    data: operationsRequests,
-    isFetching: isOperationsRequestsFetching,
-    refetch: refetchOperationsRequests,
-  } = useGetOperationsRequestsQuery();
-  const [confirmOperationRequest, { isLoading: isConfirmOperationLoading }] =
-    useConfirmOperationRequestMutation();
-
-  const {
     data: investmentsRequests,
     isFetching: isInvestmentsRequestsFetching,
-    refetch: refetchInvestmentsRequests,
   } = useGetInvestmentsRequestsQuery();
   const [confirmInvestmentRequest, { isLoading: isConfirmInvestmentLoading }] =
     useConfirmInvestmentRequestMutation();
-
-  const handleConfirmOperationRequest = (operationId: number) =>
-    confirmOperationRequest(operationId);
 
   const handleConfirmInvestmentRequest = (investmentId: number) =>
     confirmInvestmentRequest(investmentId);
@@ -42,13 +28,7 @@ export default function Dashboard() {
         <title>Admin - Requests</title>
       </Head>
       <div className="flex flex-wrap mt-4">
-        <OperationsTable
-          title="Operations To Confirm"
-          isLoading={isOperationsRequestsFetching || isConfirmOperationLoading}
-          operations={operationsRequests?.data.slice(0, 5) ?? []}
-          onConfirmButtonClick={handleConfirmOperationRequest}
-          onRefreshButtonClick={refetchOperationsRequests}
-        />
+        <OperationsTable title="Operations To Confirm" showConfirmButton />
         <InvestmentsTable
           title="Investments To Confirm"
           isLoading={

@@ -9,10 +9,7 @@ export const operationsApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
-    addOperation: builder.mutation<
-      void,
-      { amount: number; type: OperationType; clientId: number }
-    >({
+    addOperation: builder.mutation<void, AddOperationArgs>({
       query: ({ amount, type, clientId }) => ({
         url: "/operations",
         method: "POST",
@@ -38,4 +35,10 @@ export const {
   util: { getRunningQueriesThunk },
 } = operationsApiSlice;
 
-export const { getOperations } = operationsApiSlice.endpoints;
+export const { getOperations, addOperation } = operationsApiSlice.endpoints;
+
+export type AddOperationArgs = {
+  amount: number;
+  type: OperationType;
+  clientId: number;
+};

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { OperationType } from "types";
+import { AddOperationArgs } from "store/features/operations/operationsApiSlice";
 import { Modal } from "ui";
 import { OperationForm } from "../OperationForm";
 
@@ -7,11 +7,7 @@ type OperationModalProps = {
   type?: "add" | "edit";
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: (
-    amount: number,
-    operationType: OperationType,
-    clientId: string
-  ) => void;
+  onConfirm: (obj: AddOperationArgs) => void;
 };
 
 export const OperationModal: FC<OperationModalProps> = ({
