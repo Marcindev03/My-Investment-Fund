@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Client } from "types/client";
-import { Button } from "ui";
+import { Button, WithEmptyTable } from "ui";
 import { BASE_CURRENCY } from "ui/constants";
 
 const TABLE_COLUMNS = [
@@ -35,7 +35,11 @@ export const ClientsTable: FC<ClientsTableProps> = ({
   onAddClientButtonClick,
 }) => {
   return (
-    <>
+    <WithEmptyTable
+      placeholderText="No clients to show"
+      isEmpty={!clients.length}
+      color={color}
+    >
       <div
         className={
           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
@@ -125,7 +129,7 @@ export const ClientsTable: FC<ClientsTableProps> = ({
           </table>
         </div>
       </div>
-    </>
+    </WithEmptyTable>
   );
 };
 
