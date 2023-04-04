@@ -9,7 +9,10 @@ import {
   useGetOperationsRequestsQuery,
 } from "store/features/requests/requestsApiSlice";
 import { ToastContainer, toast } from "react-toastify";
-import { useAddOperationMutation } from "store/features/operations/operationsApiSlice";
+import {
+  AddOperationArgs,
+  useAddOperationMutation,
+} from "store/features/operations/operationsApiSlice";
 import { OperationModal } from "../OperationModal";
 
 const TABLE_COLUMNS = [
@@ -61,6 +64,15 @@ export const OperationsTable: FC<OperationsTableProps> = ({
       await confirmOperationRequest(id).unwrap();
       toast.success(`Successfully confirmed operation ${id}`);
     } catch (error) {
+      toast.error("Something went wrong");
+    }
+  };
+
+  const handleAddOperation = async (obj: AddOperationArgs) => {
+    try {
+      await addOperation(obj).unwrap();
+      toast.success("Successfully requested operation");
+    } catch (err) {
       toast.error("Something went wrong");
     }
   };
@@ -173,7 +185,7 @@ export const OperationsTable: FC<OperationsTableProps> = ({
       <OperationModal
         isOpen={isOpen}
         onClose={onClose}
-        onConfirm={addOperation}
+        onConfirm={handleAddOperation}
       />
     </>
   );
