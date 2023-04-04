@@ -1,3 +1,4 @@
+import { sleep } from "../helpers";
 import { currencyClient } from "./currencyClient";
 
 export const convertCurrencyToBaseCurrency = async (
@@ -19,16 +20,17 @@ export const convertCurrencyToBaseCurrency = async (
 };
 
 export const convertCurrenciesToBaseCurrencyValues = async (currencies) => {
-  const convertedValues = await Promise.all(
-    currencies.map(
-      ({ value, symbol }, index) =>
-        new Promise((resolve) => {
-          setTimeout(() => {
-            resolve(convertCurrencyToBaseCurrency(value, symbol));
-          }, 10000 * index);
-        })
-    )
-  );
+  const converted = [];
 
-  return convertedValues.reduce((sum, current) => sum + current, 0) as number;
+  for (let i = 0; i < currencies.length; i++) {
+    const { value, symbol } = currencies[i];
+
+    const convertedValue = await convertCurrencyToBaseCurrency(value, symbol);
+
+    converted.push(convertedValue);
+
+    await sleep(10000);
+  }
+
+  return converted.reduce((sum, current) => sum + current, 0) as number;
 };
