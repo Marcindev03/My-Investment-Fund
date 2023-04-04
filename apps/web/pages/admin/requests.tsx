@@ -46,6 +46,9 @@ export default function Dashboard() {
         />
         <InvestmentsTable
           title="Investments To Confirm"
+          isLoading={
+            isInvestmentsRequestsFetching || isConfirmInvestmentLoading
+          }
           color="dark"
           investments={investmentsRequests?.data.slice(0, 5) ?? []}
           onConfirmButtonClick={handleConfirmInvestmentRequest}
