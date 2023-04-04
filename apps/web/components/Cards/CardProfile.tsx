@@ -1,4 +1,5 @@
 import Image from "next/image";
+import teamImage from "public/img/team-2-800x800.jpg";
 
 export default function CardProfile() {
   return (
@@ -10,7 +11,7 @@ export default function CardProfile() {
               <div className="relative">
                 <Image
                   alt="..."
-                  src="/img/team-2-800x800.jpg"
+                  src={teamImage}
                   className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                 />
               </div>
