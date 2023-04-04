@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Investment, TableProps } from "types";
 import ClassNames from "classnames";
-import { Button } from "ui";
+import { Button, WithEmptyTable } from "ui";
 import { InvestmentsTableColumn, InvestmentsTableRow } from "./components";
 
 const TABLE_COLUMNS = [
@@ -44,7 +44,11 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
   onConfirmButtonClick,
 }) => {
   return (
-    <>
+    <WithEmptyTable
+      placeholderText="No investments to confirm"
+      isEmpty={!investments.length}
+      color={color}
+    >
       <div
         className={
           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
@@ -132,7 +136,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
           </table>
         </div>
       </div>
-    </>
+    </WithEmptyTable>
   );
 };
 

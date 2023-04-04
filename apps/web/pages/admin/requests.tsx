@@ -15,22 +15,26 @@ import { OperationsTable } from "modules/operations";
 
 export default function Dashboard() {
   const {
-    data: investmentsRequests,
-    isFetching: isInvestmentsRequestsFetching,
-  } = useGetInvestmentsRequestsQuery();
-  const { data: operationsRequests, isFetching: isOperationsRequestsFetching } =
-    useGetOperationsRequestsQuery();
-
-  const [confirmInvestmentRequest, { isLoading: isConfirmInvestmentLoading }] =
-    useConfirmInvestmentRequestMutation();
+    data: operationsRequests,
+    isFetching: isOperationsRequestsFetching,
+    refetch: refetchOperationsRequests,
+  } = useGetOperationsRequestsQuery();
   const [confirmOperationRequest, { isLoading: isConfirmOperationLoading }] =
     useConfirmOperationRequestMutation();
 
-  const handleConfirmInvestmentRequest = (investmentId: number) =>
-    confirmInvestmentRequest(investmentId);
+  const {
+    data: investmentsRequests,
+    isFetching: isInvestmentsRequestsFetching,
+    refetch: refetchInvestmentsRequests,
+  } = useGetInvestmentsRequestsQuery();
+  const [confirmInvestmentRequest, { isLoading: isConfirmInvestmentLoading }] =
+    useConfirmInvestmentRequestMutation();
 
   const handleConfirmOperationRequest = (operationId: number) =>
     confirmOperationRequest(operationId);
+
+  const handleConfirmInvestmentRequest = (investmentId: number) =>
+    confirmInvestmentRequest(investmentId);
 
   return (
     <>
@@ -43,6 +47,7 @@ export default function Dashboard() {
           isLoading={isOperationsRequestsFetching || isConfirmOperationLoading}
           operations={operationsRequests?.data.slice(0, 5) ?? []}
           onConfirmButtonClick={handleConfirmOperationRequest}
+          onRefreshButtonClick={refetchOperationsRequests}
         />
         <InvestmentsTable
           title="Investments To Confirm"

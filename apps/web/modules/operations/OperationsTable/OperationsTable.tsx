@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Operation, TableProps } from "types";
 import ClassNames from "classnames";
-import { Button } from "ui";
+import { Button, WithEmptyTable } from "ui";
 import { OperationsTableColumn } from "./components";
 import { OperationsTableRow } from "./components/OperationsTableRow";
 
@@ -42,7 +42,11 @@ export const OperationsTable: FC<OperationsTableProps> = ({
   onConfirmButtonClick,
 }) => {
   return (
-    <>
+    <WithEmptyTable
+      placeholderText="No operations to confirm"
+      isEmpty={!operations.length}
+      color={color}
+    >
       <div
         className={
           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
@@ -129,7 +133,7 @@ export const OperationsTable: FC<OperationsTableProps> = ({
           </table>
         </div>
       </div>
-    </>
+    </WithEmptyTable>
   );
 };
 
