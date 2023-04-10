@@ -51,8 +51,8 @@ export const InvestmentsTableRow: FC<InvestmentsTableRowProps> = ({
   if (isLoading)
     return (
       <tr>
-        {skeletonPattern.map((value) => (
-          <td className="px-6 p-4">
+        {skeletonPattern.map((value, index) => (
+          <td className="px-6 p-4" key={`investments_skeleton_${index}`}>
             <RowEntityWrapper>
               {value === "rectangle" && <SkeletonRectangle />}
               {value === "circle" && <SkeletonCircle />}
