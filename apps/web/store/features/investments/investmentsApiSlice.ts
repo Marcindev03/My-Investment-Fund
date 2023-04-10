@@ -1,11 +1,21 @@
+import qs from "qs";
 import { apiSlice } from "store/api/apiSlice";
 import { InvestmentsResponse } from "types";
+
+const getInvestmentsQuery = qs.stringify(
+  {
+    populate: "*",
+  },
+  {
+    encodeValuesOnly: true,
+  }
+);
 
 export const investmentsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getInvestments: builder.query<InvestmentsResponse, void>({
       query: () => ({
-        url: "/investments",
+        url: `/investments?${getInvestmentsQuery}`,
         method: "GET",
       }),
     }),

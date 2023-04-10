@@ -1,9 +1,15 @@
-import { Confirmation, Entity, ArrayResponse } from "types";
+import {
+  Confirmation,
+  Entity,
+  ArrayResponse,
+  Currency,
+  SingleEntityResponse,
+} from "types";
 
 export type Investment = Entity<
   {
     amount: number;
-    currency: string;
+    currency: SingleEntityResponse<Currency>;
     exchangeRate: number;
     date: string; // ISO string
   } & Confirmation

@@ -39,6 +39,14 @@ export type SingleResponse<T> = {
   meta: ResponseMeta;
 };
 
+export type ArrayEntityResponse<T> = {
+  data: T[];
+};
+
+export type SingleEntityResponse<T> = {
+  data: T;
+};
+
 export type Confirmation = {
   adminConfirmed: boolean;
   userConfirmed: boolean;
