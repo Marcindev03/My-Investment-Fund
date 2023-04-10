@@ -4,6 +4,7 @@ import { InvestmentsResponse, OperationsResponse } from "types";
 
 const query = qs.stringify(
   {
+    populate: "*",
     filters: {
       adminConfirmed: {
         $eq: false,
