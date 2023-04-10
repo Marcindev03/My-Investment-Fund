@@ -11,6 +11,8 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
     "start:web": "cd apps/web && yarn start",
     "start:backend": "cd apps/backend && yarn start"
   },
