@@ -12,10 +12,13 @@ export const CardContainer: FC<CardContainerProps> = ({
 }) => {
   return (
     <section
-      className={ClassNames("w-full rounded p-4 break-words shadow-lg", {
-        "bg-white": variant === "light",
-        "bg-blueGray-700": variant === "dark",
-      })}
+      className={ClassNames(
+        "w-full rounded p-4 break-words shadow-lg relative",
+        {
+          "bg-white": variant === "light",
+          "bg-blueGray-700": variant === "dark",
+        }
+      )}
     >
       {children}
     </section>

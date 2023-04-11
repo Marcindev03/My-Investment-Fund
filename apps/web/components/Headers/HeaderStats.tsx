@@ -29,7 +29,7 @@ const HeaderStats: FC<HeaderStatsProps> = ({}) => {
       <div className="relative bg-blueGray-800 md:pt-16 pb-32 pt-12">
         <div className="md:px-10 mx-auto w-full">
           <div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
               <CardStats
                 statSubtitle="BASE CURRENCY VALUE"
                 statValue={`${baseCurrencyValueData?.data.attributes.value} ${BASE_CURRENCY}`}

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { TableProps } from "types";
 import ClassNames from "classnames";
-import { Button, useModal, TableContainer } from "ui";
+import { Button, useModal, TableContainer, Card } from "ui";
 import { OperationsTableColumn } from "./components";
 import { OperationsTableRow } from "./components/OperationsTableRow";
 import {
@@ -14,6 +14,7 @@ import {
   useAddOperationMutation,
 } from "store/features/operations/operationsApiSlice";
 import { OperationModal } from "../OperationModal";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 
 const TABLE_COLUMNS = [
   {
@@ -80,21 +81,14 @@ export const OperationsTable: FC<OperationsTableProps> = ({
   const isTableLoading = isFetching || isLoading || isAddOperationLoading;
 
   return (
-    <>
+    <Card variant={color} error={error as FetchBaseQueryError}>
       <TableContainer
         placeholderText="No operations to confirm"
         isEmpty={!data?.data.length}
         color={color}
-        isError={!!error}
-        errorMessage="Error occured. We couldn't fetch operations"
       >
-        <div
-          className={
-            "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
-            (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
-          }
-        >
-          <div className="rounded-t mb-0 px-4 py-3 border-0">
+        <div className={"flex flex-col break-words"}>
+          <div className="mb-0 pb-4">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full px-4 max-w-full flex-grow flex-1">
                 <h3
@@ -187,7 +181,7 @@ export const OperationsTable: FC<OperationsTableProps> = ({
         onClose={onClose}
         onConfirm={handleAddOperation}
       />
-    </>
+    </Card>
   );
 };
 
