@@ -12,7 +12,7 @@ type CardProps = {
 export const Card: FC<CardProps> = ({ variant = "light", error, children }) => {
   return (
     <CardContainer variant={variant}>
-      {!error ? <>{children}</> : <ErrorCard />}
+      {!error ? <>{children}</> : <ErrorCard variant={variant} />}
     </CardContainer>
   );
 };

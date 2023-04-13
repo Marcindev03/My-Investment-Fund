@@ -1,6 +1,7 @@
 import qs from "qs";
 import { apiSlice } from "store/api/apiSlice";
-import { ClientResponse, ClientsResponse } from "types/client";
+import { ClientResponse } from "types/client";
+import { transformGetClientsResponse } from "./clientsApiTransformResponse";
 
 const query = qs.stringify(
   {
@@ -13,11 +14,15 @@ const query = qs.stringify(
 
 export const clientsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getClients: builder.query<ClientsResponse, void>({
+    getClients: builder.query<
+      ReturnType<typeof transformGetClientsResponse>,
+      void
+    >({
       query: () => ({
         url: `/clients?${query}`,
       }),
       providesTags: ["Clients"],
+      transformResponse: transformGetClientsResponse,
     }),
     addClient: builder.mutation<ClientResponse, number>({
       query: (userId) => ({

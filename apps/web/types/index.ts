@@ -55,7 +55,6 @@ export type Confirmation = {
 export type TableProps = {
   title?: string;
   color?: "light" | "dark";
-  isLoading?: boolean;
   showConfirmButton?: boolean;
   showRequestButton?: boolean;
 };
