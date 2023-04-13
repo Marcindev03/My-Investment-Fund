@@ -25,7 +25,7 @@ Simple web admin panel that simulates investment fund.
 
 
 ## Development Setup
-1. Make sure you have `Node.js` and `Docker` installed
+1. Make sure you have `Node.js v.16.18.0` and `Docker` installed
 2. Run `apps/backend/docker-compose.yaml` file
 3. Install dependencies from project root directory
 ```bash
