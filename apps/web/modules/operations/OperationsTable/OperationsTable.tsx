@@ -40,10 +40,7 @@ const TABLE_COLUMNS = [
   },
 ];
 
-type OperationsTableProps = {
-  showConfirmButton?: boolean;
-  showRequestButton?: boolean;
-} & TableProps;
+type OperationsTableProps = {} & TableProps;
 
 export const OperationsTable: FC<OperationsTableProps> = ({
   title = "Operations",
@@ -81,96 +78,98 @@ export const OperationsTable: FC<OperationsTableProps> = ({
   const isTableLoading = isFetching || isLoading || isAddOperationLoading;
 
   return (
-    <Card variant={color} error={error as FetchBaseQueryError}>
-      <TableContainer
-        placeholderText="No operations to confirm"
-        isEmpty={!data?.data.length}
-        color={color}
-      >
-        <div className={"flex flex-col break-words"}>
-          <div className="mb-0 pb-4">
-            <div className="flex flex-wrap items-center">
-              <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                <h3
-                  className={
-                    "font-semibold text-lg " +
-                    (color === "light" ? "text-blueGray-700" : "text-white")
-                  }
-                >
-                  {title}
-                </h3>
-              </div>
-              {!!showRequestButton && (
-                <div>
-                  <Button primary onClick={onOpen}>
-                    Request Operation
-                  </Button>
+    <>
+      <Card variant={color} error={error as FetchBaseQueryError}>
+        <TableContainer
+          placeholderText="No operations to confirm"
+          isEmpty={!data?.data.length}
+          color={color}
+        >
+          <div className={"flex flex-col break-words"}>
+            <div className="mb-0 pb-4">
+              <div className="flex flex-wrap items-center">
+                <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+                  <h3
+                    className={
+                      "font-semibold text-lg " +
+                      (color === "light" ? "text-blueGray-700" : "text-white")
+                    }
+                  >
+                    {title}
+                  </h3>
                 </div>
-              )}
+                {!!showRequestButton && (
+                  <div>
+                    <Button primary onClick={onOpen}>
+                      Request Operation
+                    </Button>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="block w-full overflow-x-auto">
-            <table className="items-center w-full bg-transparent border-collapse">
-              <thead>
-                <tr>
-                  {TABLE_COLUMNS.map(({ name }) => (
-                    <>
-                      {name !== "Actions" ? (
-                        <OperationsTableColumn
-                          key={`operations_table_column_${name}`}
-                          name={name}
-                          color={color}
-                        />
-                      ) : (
-                        !!showConfirmButton && (
+            <div className="block w-full overflow-x-auto">
+              <table className="items-center w-full bg-transparent border-collapse">
+                <thead>
+                  <tr>
+                    {TABLE_COLUMNS.map(({ name }) => (
+                      <>
+                        {name !== "Actions" ? (
                           <OperationsTableColumn
                             key={`operations_table_column_${name}`}
                             name={name}
                             color={color}
                           />
-                        )
-                      )}
-                    </>
-                  ))}
-                </tr>
-              </thead>
-              <tbody
-                className={ClassNames({
-                  "animate-pulse": isTableLoading,
-                })}
-              >
-                {data?.data.map(
-                  ({
-                    id,
-                    attributes: {
-                      amount,
-                      type,
-                      date,
-                      userConfirmed,
-                      adminConfirmed,
-                    },
-                  }) => (
-                    <OperationsTableRow
-                      key={`operations_table_item_${id}`}
-                      id={id}
-                      amount={amount}
-                      type={type}
-                      date={date}
-                      color={color}
-                      userConfirmed={userConfirmed}
-                      adminConfirmed={adminConfirmed}
-                      isLoading={isTableLoading}
-                      onConfirmButtonClick={
-                        showConfirmButton ? handleOperationConfirm : undefined
-                      }
-                    />
-                  )
-                )}
-              </tbody>
-            </table>
+                        ) : (
+                          !!showConfirmButton && (
+                            <OperationsTableColumn
+                              key={`operations_table_column_${name}`}
+                              name={name}
+                              color={color}
+                            />
+                          )
+                        )}
+                      </>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody
+                  className={ClassNames({
+                    "animate-pulse": isTableLoading,
+                  })}
+                >
+                  {data?.data.map(
+                    ({
+                      id,
+                      attributes: {
+                        amount,
+                        type,
+                        date,
+                        userConfirmed,
+                        adminConfirmed,
+                      },
+                    }) => (
+                      <OperationsTableRow
+                        key={`operations_table_item_${id}`}
+                        id={id}
+                        amount={amount}
+                        type={type}
+                        date={date}
+                        color={color}
+                        userConfirmed={userConfirmed}
+                        adminConfirmed={adminConfirmed}
+                        isLoading={isTableLoading}
+                        onConfirmButtonClick={
+                          showConfirmButton ? handleOperationConfirm : undefined
+                        }
+                      />
+                    )
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-      </TableContainer>
+        </TableContainer>
+      </Card>
       <ToastContainer
         position="bottom-center"
         hideProgressBar
@@ -181,7 +180,7 @@ export const OperationsTable: FC<OperationsTableProps> = ({
         onClose={onClose}
         onConfirm={handleAddOperation}
       />
-    </Card>
+    </>
   );
 };
 

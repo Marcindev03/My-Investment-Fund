@@ -19,15 +19,7 @@ export const investmentsApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
-    addInvestment: builder.mutation<
-      void,
-      {
-        amount: number;
-        exchangeRate: number;
-        clientId: number;
-        currencyId: number;
-      }
-    >({
+    addInvestment: builder.mutation<void, AddInvestmentArgs>({
       query: ({ amount, exchangeRate, clientId, currencyId }) => ({
         url: "/investments",
         method: "POST",
@@ -55,3 +47,10 @@ export const {
 } = investmentsApiSlice;
 
 export const { getInvestments } = investmentsApiSlice.endpoints;
+
+export type AddInvestmentArgs = {
+  amount: number;
+  exchangeRate: number;
+  clientId: number;
+  currencyId: number;
+};

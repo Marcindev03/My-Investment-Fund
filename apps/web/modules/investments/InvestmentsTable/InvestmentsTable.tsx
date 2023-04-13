@@ -1,8 +1,17 @@
-import { FC } from "react";
-import { Investment, TableProps } from "types";
+import { FC, useMemo } from "react";
+import { TableProps } from "types";
 import ClassNames from "classnames";
-import { Button, TableContainer } from "ui";
+import { Button, Card, TableContainer, useModal } from "ui";
+import { toast, ToastContainer } from "react-toastify";
 import { InvestmentsTableColumn, InvestmentsTableRow } from "./components";
+import { InvestmentModal } from "../InvestmentModal";
+import {
+  useGetInvestmentsQuery,
+  useAddInvestmentMutation,
+  AddInvestmentArgs,
+} from "store/features/investments/investmentsApiSlice";
+import { useConfirmInvestmentRequestMutation } from "store/features/requests/requestsApiSlice";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 
 const TABLE_COLUMNS = [
   {
@@ -31,112 +40,154 @@ const TABLE_COLUMNS = [
   },
 ];
 
-type InvestmentsTableProps = {
-  investments: Investment[];
-} & TableProps;
+type InvestmentsTableProps = {} & TableProps;
 
 export const InvestmentsTable: FC<InvestmentsTableProps> = ({
-  investments,
   title = "Investments",
   color = "light",
-  isLoading = false,
-  onRequestButtonClick,
-  onConfirmButtonClick,
+  showConfirmButton,
+  showRequestButton,
 }) => {
+  const { data, error, isFetching } = useGetInvestmentsQuery();
+  const [addInvestment, { isLoading }] = useAddInvestmentMutation();
+  const [confirmInvestmentRequest, { isLoading: isConfirmLoading }] =
+    useConfirmInvestmentRequestMutation();
+
+  const { isOpen, onClose, onOpen } = useModal();
+
+  const handleAddNewInvestment = async (obj: AddInvestmentArgs) => {
+    try {
+      await addInvestment(obj);
+      toast.success("Successfully requested investment");
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
+  };
+
+  const handleInvestmentConfirm = async (id: number) => {
+    try {
+      await confirmInvestmentRequest(id);
+      toast.success(`Successfully confirmed investment ${id}`);
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
+  };
+
+  const investments = useMemo(() => data?.data ?? [], [data]);
+
+  const isTableLoading = useMemo(
+    () => isFetching || isLoading || isConfirmLoading,
+    [isFetching, isLoading, isConfirmLoading]
+  );
+
   return (
-    <TableContainer
-      placeholderText="No investments to confirm"
-      isEmpty={!investments.length}
-      color={color}
-    >
-      <div
-        className={
-          "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
-          (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
-        }
-      >
-        <div className="rounded-t mb-0 px-4 py-3 border-0">
-          <div className="flex flex-wrap items-center">
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <h3
-                className={
-                  "font-semibold text-lg " +
-                  (color === "light" ? "text-blueGray-700" : "text-white")
-                }
-              >
-                {title}
-              </h3>
-            </div>
-            {!!onRequestButtonClick && (
-              <div>
-                <Button primary onClick={onRequestButtonClick}>
-                  Request Investment
-                </Button>
+    <>
+      <Card variant={color} error={error as FetchBaseQueryError}>
+        <TableContainer
+          placeholderText="No investments to confirm"
+          isEmpty={!investments.length}
+          color={color}
+        >
+          <div
+            className={
+              "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
+              (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
+            }
+          >
+            <div className="rounded-t mb-0 px-4 py-3 border-0">
+              <div className="flex flex-wrap items-center">
+                <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+                  <h3
+                    className={
+                      "font-semibold text-lg " +
+                      (color === "light" ? "text-blueGray-700" : "text-white")
+                    }
+                  >
+                    {title}
+                  </h3>
+                </div>
+                {!!showRequestButton && (
+                  <div>
+                    <Button primary onClick={onOpen}>
+                      Request Investment
+                    </Button>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </div>
-        <div className="block w-full overflow-x-auto">
-          <table className="items-center w-full bg-transparent border-collapse">
-            <thead>
-              <tr>
-                {TABLE_COLUMNS.map(({ name }) => (
-                  <>
-                    {name !== "Actions" ? (
-                      <InvestmentsTableColumn
-                        key={`investments_table_column_${name}`}
-                        name={name}
-                        color={color}
+            </div>
+            <div className="block w-full overflow-x-auto">
+              <table className="items-center w-full bg-transparent border-collapse">
+                <thead>
+                  <tr>
+                    {TABLE_COLUMNS.map(({ name }) => (
+                      <>
+                        {name !== "Actions" ? (
+                          <InvestmentsTableColumn
+                            key={`investments_table_column_${name}`}
+                            name={name}
+                            color={color}
+                          />
+                        ) : (
+                          !!showConfirmButton && (
+                            <InvestmentsTableColumn
+                              key={`investments_table_column_${name}`}
+                              name={name}
+                              color={color}
+                            />
+                          )
+                        )}
+                      </>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody
+                  className={ClassNames({
+                    "animate-pulse": isTableLoading,
+                  })}
+                >
+                  {investments.map(
+                    ({
+                      id,
+                      attributes: {
+                        amount,
+                        currency,
+                        exchangeRate,
+                        date,
+                        userConfirmed,
+                        adminConfirmed,
+                      },
+                    }) => (
+                      <InvestmentsTableRow
+                        key={`investments_table_row_${id}`}
+                        id={id}
+                        amount={amount}
+                        currency={currency.data.attributes.symbol}
+                        exchangeRate={exchangeRate}
+                        date={date}
+                        userConfirmed={userConfirmed}
+                        adminConfirmed={adminConfirmed}
+                        isLoading={isTableLoading}
+                        onConfirmButtonClick={handleInvestmentConfirm}
                       />
-                    ) : (
-                      !!onConfirmButtonClick && (
-                        <InvestmentsTableColumn
-                          key={`investments_table_column_${name}`}
-                          name={name}
-                          color={color}
-                        />
-                      )
-                    )}
-                  </>
-                ))}
-              </tr>
-            </thead>
-            <tbody
-              className={ClassNames({
-                "animate-pulse": isLoading,
-              })}
-            >
-              {investments.map(
-                ({
-                  id,
-                  attributes: {
-                    amount,
-                    currency,
-                    exchangeRate,
-                    date,
-                    userConfirmed,
-                    adminConfirmed,
-                  },
-                }) => (
-                  <InvestmentsTableRow
-                    key={`investments_table_row_${id}`}
-                    id={id}
-                    amount={amount}
-                    currency={currency.data.attributes.symbol}
-                    exchangeRate={exchangeRate}
-                    date={date}
-                    userConfirmed={userConfirmed}
-                    adminConfirmed={adminConfirmed}
-                    isLoading={isLoading}
-                    onConfirmButtonClick={onConfirmButtonClick}
-                  />
-                )
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </TableContainer>
+                    )
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </TableContainer>
+      </Card>
+      <ToastContainer
+        position="bottom-center"
+        hideProgressBar
+        autoClose={2000}
+      />
+      <InvestmentModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onConfirm={handleAddNewInvestment}
+      />
+    </>
   );
 };
 

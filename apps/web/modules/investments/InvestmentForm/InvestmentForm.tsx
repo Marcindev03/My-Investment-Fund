@@ -1,15 +1,11 @@
 import { FC, useMemo, useState } from "react";
 import { useGetClientsQuery } from "store/features/clients/clientsApiSlice";
 import { useGetCurrenciesQuery } from "store/features/currencies/currenciesApiSlice";
+import { AddInvestmentArgs } from "store/features/investments/investmentsApiSlice";
 import { FormControl, NumberInput, Option, Select } from "ui";
 
 type InvestmentFormProps = {
-  onSubmit: (
-    amount: number,
-    exchangeRate: number,
-    clientId: number,
-    currencyId: number
-  ) => void;
+  onSubmit: (obj: AddInvestmentArgs) => void;
   onReject: () => void;
 };
 
@@ -32,7 +28,12 @@ export const InvestmentForm: FC<InvestmentFormProps> = ({
       isCurrencyIdValid &&
       isClientIdValid
     ) {
-      onSubmit(amount, exchangeRate, +clientId, +currencyId);
+      onSubmit({
+        amount,
+        exchangeRate,
+        clientId: +clientId,
+        currencyId: +currencyId,
+      });
     }
   };
 

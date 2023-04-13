@@ -56,6 +56,6 @@ export type TableProps = {
   title?: string;
   color?: "light" | "dark";
   isLoading?: boolean;
-  onRequestButtonClick?: () => void;
-  onConfirmButtonClick?: (entityId: number) => void;
+  showConfirmButton?: boolean;
+  showRequestButton?: boolean;
 };

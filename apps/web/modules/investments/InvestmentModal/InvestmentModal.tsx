@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { AddInvestmentArgs } from "store/features/investments/investmentsApiSlice";
 import { Modal } from "ui";
 import { InvestmentForm } from "../InvestmentForm";
 
@@ -6,12 +7,7 @@ type InvestmentModalProps = {
   type?: "add" | "edit";
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: (
-    amount: number,
-    exchangeRate: number,
-    clientId: number,
-    currencyId: number
-  ) => void;
+  onConfirm: (obj: AddInvestmentArgs) => void;
 };
 
 export const InvestmentModal: FC<InvestmentModalProps> = ({
