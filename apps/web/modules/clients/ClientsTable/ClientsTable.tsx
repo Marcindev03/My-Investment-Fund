@@ -10,6 +10,7 @@ import { TableProps } from "types";
 import { Button, Card, TableContainer, useModal } from "ui";
 import { BASE_CURRENCY } from "ui/constants";
 import { ClientModal } from "../ClientModal";
+import { toast, ToastContainer } from "react-toastify";
 
 const TABLE_COLUMNS = [
   {
@@ -47,16 +48,22 @@ export const ClientsTable: FC<ClientsTableProps> = ({
     email: string,
     password: string
   ) => {
-    const {
-      user: { id: userId },
-    } = await registerUser({
-      firstName,
-      lastName,
-      email,
-      password,
-    }).unwrap();
+    try {
+      const {
+        user: { id: userId },
+      } = await registerUser({
+        firstName,
+        lastName,
+        email,
+        password,
+      }).unwrap();
 
-    await addClient(userId).unwrap();
+      await addClient(userId).unwrap();
+
+      toast.success("Successfully added new client");
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
   };
 
   const isTableLoading = useMemo(
@@ -86,7 +93,7 @@ export const ClientsTable: FC<ClientsTableProps> = ({
                   </h3>
                 </div>
                 <div>
-                  <Button primary onClick={() => {}}>
+                  <Button primary onClick={onOpen}>
                     Add client
                   </Button>
                 </div>
@@ -156,6 +163,11 @@ export const ClientsTable: FC<ClientsTableProps> = ({
           </div>
         </TableContainer>
       </Card>
+      <ToastContainer
+        position="bottom-center"
+        hideProgressBar
+        autoClose={2000}
+      />
       <ClientModal
         isOpen={isOpen}
         onClose={onClose}
