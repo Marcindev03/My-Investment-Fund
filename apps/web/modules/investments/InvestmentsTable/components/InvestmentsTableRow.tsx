@@ -45,8 +45,10 @@ export const InvestmentsTableRow: FC<InvestmentsTableRowProps> = ({
   isLoading = false,
   onConfirmButtonClick,
 }) => {
-  const tdStyles =
-    "border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4";
+  const tdStyles = ClassNames(
+    "border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4",
+    { "text-white": color === "dark" }
+  );
 
   if (isLoading)
     return (

@@ -5,6 +5,9 @@ import { InvestmentsResponse } from "types";
 const getInvestmentsQuery = qs.stringify(
   {
     populate: "*",
+    pagination: {
+      pageSize: 10,
+    },
   },
   {
     encodeValuesOnly: true,

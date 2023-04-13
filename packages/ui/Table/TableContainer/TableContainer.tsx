@@ -18,11 +18,7 @@ export const TableContainer: FC<TableContainerProps> = ({
     return (
       <section
         className={ClassNames(
-          "relative font-medium text-xl w-full mb-6 rounded  flex flex-col justify-center items-center h-80",
-          {
-            "bg-white": color === "light",
-            "bg-blueGray-700 text-white": color === "dark",
-          }
+          "relative font-medium text-xl w-full mb-6 rounded  flex flex-col justify-center items-center h-80"
         )}
       >
         <p className="mb-4">{placeholderText}</p>

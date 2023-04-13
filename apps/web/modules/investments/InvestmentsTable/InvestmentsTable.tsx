@@ -86,7 +86,6 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
         <TableContainer
           placeholderText="No investments to confirm"
           isEmpty={!investments.length}
-          color={color}
         >
           <div className={"flex flex-col break-words"}>
             <div className="mb-0 pb-4">
@@ -156,9 +155,10 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                         key={`investments_table_row_${id}`}
                         id={id}
                         amount={amount}
-                        currency={currency.data.attributes.symbol}
+                        currency={currency?.data?.attributes.symbol}
                         exchangeRate={exchangeRate}
                         date={date}
+                        color={color}
                         userConfirmed={userConfirmed}
                         adminConfirmed={adminConfirmed}
                         isLoading={isTableLoading}

@@ -20,9 +20,9 @@ const HeaderStats: FC<HeaderStatsProps> = ({}) => {
     error: mostValuableCurrenciesError,
   } = useGetMostValuableCurrenciesQuery();
 
-  const firstCurrency = mostValuableCurrenciesData?.data[0].attributes;
+  const firstCurrency = mostValuableCurrenciesData?.data[0]?.attributes;
 
-  const secondCurrency = mostValuableCurrenciesData?.data[1].attributes;
+  const secondCurrency = mostValuableCurrenciesData?.data[1]?.attributes;
 
   return (
     <>

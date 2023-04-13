@@ -5,38 +5,22 @@ import {
   getInvestmentsRequests,
   getOperationsRequests,
   getRunningQueriesThunk,
-  useConfirmInvestmentRequestMutation,
-  useGetInvestmentsRequestsQuery,
 } from "store/features/requests/requestsApiSlice";
 import { InvestmentsTable } from "modules/investments";
 import { OperationsTable } from "modules/operations";
 
 export default function Dashboard() {
-  const {
-    data: investmentsRequests,
-    isFetching: isInvestmentsRequestsFetching,
-  } = useGetInvestmentsRequestsQuery();
-  const [confirmInvestmentRequest, { isLoading: isConfirmInvestmentLoading }] =
-    useConfirmInvestmentRequestMutation();
-
-  const handleConfirmInvestmentRequest = (investmentId: number) =>
-    confirmInvestmentRequest(investmentId);
-
   return (
     <>
       <Head>
         <title>Admin - Requests</title>
       </Head>
-      <div className="flex flex-wrap mt-4">
+      <div className="grid grid-cols-1 gap-y-4 mt-4">
         <OperationsTable title="Operations To Confirm" showConfirmButton />
         <InvestmentsTable
           title="Investments To Confirm"
-          isLoading={
-            isInvestmentsRequestsFetching || isConfirmInvestmentLoading
-          }
           color="dark"
-          investments={investmentsRequests?.data.slice(0, 5) ?? []}
-          onConfirmButtonClick={handleConfirmInvestmentRequest}
+          showConfirmButton
         />
       </div>
     </>
