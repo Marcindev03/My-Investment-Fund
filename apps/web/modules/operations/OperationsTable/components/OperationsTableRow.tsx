@@ -54,7 +54,10 @@ export const OperationsTableRow: FC<OperationsTableRowProps> = ({
     return (
       <tr>
         {skeletonPattern.map((value) => (
-          <td className="px-6 p-4">
+          <td
+            className="px-6 p-4"
+            key={`operations_table_skeleton_row_${value}`}
+          >
             <RowEntityWrapper>
               {value === "rectangle" && <SkeletonRectangle />}
               {value === "circle" && <SkeletonCircle />}

@@ -57,7 +57,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
 
   const handleAddNewInvestment = async (obj: AddInvestmentArgs) => {
     try {
-      await addInvestment(obj);
+      await addInvestment(obj).unwrap();
       toast.success("Successfully requested investment");
     } catch (err) {
       toast.error("Something went wrong");
@@ -66,7 +66,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
 
   const handleInvestmentConfirm = async (id: number) => {
     try {
-      await confirmInvestmentRequest(id);
+      await confirmInvestmentRequest(id).unwrap();
       toast.success(`Successfully confirmed investment ${id}`);
     } catch (err) {
       toast.error("Something went wrong");
@@ -100,7 +100,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                     {title}
                   </h3>
                 </div>
-                {!!showRequestButton && (
+                {showRequestButton && (
                   <div>
                     <Button primary onClick={onOpen}>
                       Request Investment
@@ -122,7 +122,7 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                             color={color}
                           />
                         ) : (
-                          !!showConfirmButton && (
+                          showConfirmButton && (
                             <InvestmentsTableColumn
                               key={`investments_table_column_${name}`}
                               name={name}
@@ -162,7 +162,11 @@ export const InvestmentsTable: FC<InvestmentsTableProps> = ({
                         userConfirmed={userConfirmed}
                         adminConfirmed={adminConfirmed}
                         isLoading={isTableLoading}
-                        onConfirmButtonClick={handleInvestmentConfirm}
+                        onConfirmButtonClick={
+                          showConfirmButton
+                            ? handleInvestmentConfirm
+                            : undefined
+                        }
                       />
                     )
                   )}
