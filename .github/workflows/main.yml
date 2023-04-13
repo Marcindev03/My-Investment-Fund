@@ -1,0 +1,16 @@
+name: PR opened
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+    - name: Install dependencies
+      run: yarn
+
+    - name: Build app
+      run: yarn build
