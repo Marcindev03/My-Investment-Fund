@@ -8,6 +8,7 @@ type CardStatsProps = {
   statIconName: string;
   statIconColor: string;
   error?: FetchBaseQueryError;
+  isLoading?: boolean;
 };
 
 const CardStats: FC<CardStatsProps> = ({
@@ -16,8 +17,9 @@ const CardStats: FC<CardStatsProps> = ({
   statIconName = "far fa-chart-bar",
   statIconColor = "bg-red-500",
   error,
+  isLoading = false,
 }) => (
-  <Card error={error}>
+  <Card error={error} isLoading={isLoading}>
     <div className="flex-auto">
       <div className="flex flex-wrap">
         <div className="relative w-full max-w-full flex-grow flex-1">

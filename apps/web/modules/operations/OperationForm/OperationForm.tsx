@@ -40,21 +40,10 @@ export const OperationForm: FC<OperationFormProps> = ({
   ];
 
   const availableClientsIds: Option[] =
-    clients?.data.map(
-      ({
-        id,
-        attributes: {
-          users_permissions_user: {
-            data: {
-              attributes: { firstName, lastName },
-            },
-          },
-        },
-      }) => ({
-        label: `${firstName} ${lastName}`,
-        value: id.toString(),
-      })
-    ) ?? [];
+    clients?.map(({ id, users_permissions_user: { firstName, lastName } }) => ({
+      label: `${firstName} ${lastName}`,
+      value: id.toString(),
+    })) ?? [];
 
   return (
     <form className="flex-col" onSubmit={(e) => e.preventDefault()}>

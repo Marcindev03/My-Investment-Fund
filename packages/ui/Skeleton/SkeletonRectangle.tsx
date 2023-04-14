@@ -1,5 +1,14 @@
 import { FC } from "react";
+import ClassNames from "classnames";
 
-export const SkeletonRectangle: FC = () => (
-  <div className="h-2 w-16 rounded-full bg-gray-400"></div>
+type SkeletonRectangleProps = {
+  className?: string;
+};
+
+export const SkeletonRectangle: FC<SkeletonRectangleProps> = ({
+  className,
+}) => (
+  <div
+    className={ClassNames("h-2 w-16 rounded-full bg-gray-400", className)}
+  ></div>
 );

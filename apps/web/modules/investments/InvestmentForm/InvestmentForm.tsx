@@ -43,16 +43,11 @@ export const InvestmentForm: FC<InvestmentFormProps> = ({
   const isClientIdValid = useMemo(() => clientId !== "", [clientId]);
 
   const availableClientsIds: Option[] =
-    clients?.data.map(
+    clients?.map(
       ({
         id,
-        attributes: {
-          users_permissions_user: {
-            data: {
-              attributes: { firstName, lastName },
-            },
-          },
-        },
+
+        users_permissions_user: { firstName, lastName },
       }) => ({
         label: `${firstName} ${lastName}`,
         value: id.toString(),

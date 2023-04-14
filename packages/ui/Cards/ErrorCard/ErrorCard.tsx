@@ -10,13 +10,13 @@ type ErrorCardProps = {
 
 export const ErrorCard: FC<ErrorCardProps> = ({ error, variant = "light" }) => {
   return (
-    <p
-      className={ClassNames("flex justify-center items-center", {
+    <div
+      className={ClassNames("flex justify-center items-center h-full", {
         "text-white": variant === "dark",
       })}
     >
       <BsFillExclamationCircleFill className="mr-2 text-red-600" />
       <span className="font-medium">Network Error</span>
-    </p>
+    </div>
   );
 };

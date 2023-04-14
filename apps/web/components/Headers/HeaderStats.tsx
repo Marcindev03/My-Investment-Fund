@@ -11,13 +11,20 @@ import { BASE_CURRENCY } from "ui/constants";
 type HeaderStatsProps = {};
 
 const HeaderStats: FC<HeaderStatsProps> = ({}) => {
-  const { data: baseCurrencyValueData, error: baseCurrencyValueError } =
-    useGetBaseCurrencyValueQuery();
-  const { data: baseCurrencyAmountData, error: baseCurrencyAmountError } =
-    useGetBaseCurrencyAmountQuery();
+  const {
+    data: baseCurrencyValueData,
+    error: baseCurrencyValueError,
+    isFetching,
+  } = useGetBaseCurrencyValueQuery();
+  const {
+    data: baseCurrencyAmountData,
+    error: baseCurrencyAmountError,
+    isFetching: isBaseCurrencyAmountFetching,
+  } = useGetBaseCurrencyAmountQuery();
   const {
     data: mostValuableCurrenciesData,
     error: mostValuableCurrenciesError,
+    isFetching: isGetMoseValueableCurrenciesFetching,
   } = useGetMostValuableCurrenciesQuery();
 
   const firstCurrency = mostValuableCurrenciesData?.data[0]?.attributes;
@@ -36,6 +43,7 @@ const HeaderStats: FC<HeaderStatsProps> = ({}) => {
                 statIconName="far fa-chart-bar"
                 statIconColor="bg-red-500"
                 error={baseCurrencyValueError as FetchBaseQueryError}
+                isLoading={isFetching}
               />
               <CardStats
                 statSubtitle="BASE CURRENCY AMOUNT"
@@ -43,6 +51,7 @@ const HeaderStats: FC<HeaderStatsProps> = ({}) => {
                 statIconName="far fa-chart-bar"
                 statIconColor="bg-red-500"
                 error={baseCurrencyAmountError as FetchBaseQueryError}
+                isLoading={isBaseCurrencyAmountFetching}
               />
               <CardStats
                 statSubtitle={`${firstCurrency?.name} VALUE`}
@@ -50,6 +59,7 @@ const HeaderStats: FC<HeaderStatsProps> = ({}) => {
                 statIconName="fas fa-users"
                 statIconColor="bg-pink-500"
                 error={mostValuableCurrenciesError as FetchBaseQueryError}
+                isLoading={isGetMoseValueableCurrenciesFetching}
               />
               <CardStats
                 statSubtitle={`${secondCurrency?.name} VALUE`}
@@ -57,6 +67,7 @@ const HeaderStats: FC<HeaderStatsProps> = ({}) => {
                 statIconName="fas fa-users"
                 statIconColor="bg-pink-500"
                 error={mostValuableCurrenciesError as FetchBaseQueryError}
+                isLoading={isGetMoseValueableCurrenciesFetching}
               />
             </div>
           </div>
