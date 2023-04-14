@@ -7,6 +7,7 @@ import { LoadingCard } from "../LoadingCard";
 type CardProps = {
   variant?: "light" | "dark";
   error?: FetchBaseQueryError;
+  errorCardClassName?: string;
   isLoading?: boolean;
   children: ReactNode;
 };
@@ -14,12 +15,17 @@ type CardProps = {
 export const Card: FC<CardProps> = ({
   variant = "light",
   error,
+  errorCardClassName,
   isLoading = false,
   children,
 }) => {
   return (
     <CardContainer variant={variant}>
-      {isLoading ? <LoadingCard /> : error && <ErrorCard variant={variant} />}
+      {isLoading ? (
+        <LoadingCard />
+      ) : (
+        error && <ErrorCard variant={variant} className={errorCardClassName} />
+      )}
       {!error && !isLoading && <>{children}</>}
     </CardContainer>
   );

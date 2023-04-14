@@ -73,7 +73,11 @@ export const ClientsTable: FC<ClientsTableProps> = ({
 
   return (
     <>
-      <Card variant={color} error={error as FetchBaseQueryError}>
+      <Card
+        variant={color}
+        error={error as FetchBaseQueryError}
+        errorCardClassName="h-96"
+      >
         <TableContainer
           placeholderText="No clients to show"
           isEmpty={!data?.length}

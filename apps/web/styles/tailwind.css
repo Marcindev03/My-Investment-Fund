@@ -1490,6 +1490,10 @@ select {
   height: 20rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .h-auto {
   height: auto;
 }

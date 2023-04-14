@@ -19,7 +19,7 @@ const CardStats: FC<CardStatsProps> = ({
   error,
   isLoading = false,
 }) => (
-  <Card error={error} isLoading={isLoading}>
+  <Card error={error} isLoading={isLoading} errorCardClassName="h-full">
     <div className="flex-auto">
       <div className="flex flex-wrap">
         <div className="relative w-full max-w-full flex-grow flex-1">

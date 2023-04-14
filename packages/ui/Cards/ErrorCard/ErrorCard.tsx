@@ -6,14 +6,23 @@ import { BsFillExclamationCircleFill } from "react-icons/bs";
 type ErrorCardProps = {
   variant?: "light" | "dark";
   error?: FetchBaseQueryError;
+  className?: string;
 };
 
-export const ErrorCard: FC<ErrorCardProps> = ({ error, variant = "light" }) => {
+export const ErrorCard: FC<ErrorCardProps> = ({
+  error,
+  className,
+  variant = "light",
+}) => {
   return (
     <div
-      className={ClassNames("flex justify-center items-center h-full", {
-        "text-white": variant === "dark",
-      })}
+      className={ClassNames(
+        "flex justify-center items-center",
+        {
+          "text-white": variant === "dark",
+        },
+        className
+      )}
     >
       <BsFillExclamationCircleFill className="mr-2 text-red-600" />
       <span className="font-medium">Network Error</span>

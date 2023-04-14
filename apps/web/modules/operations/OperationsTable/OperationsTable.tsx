@@ -79,7 +79,11 @@ export const OperationsTable: FC<OperationsTableProps> = ({
 
   return (
     <>
-      <Card variant={color} error={error as FetchBaseQueryError}>
+      <Card
+        variant={color}
+        error={error as FetchBaseQueryError}
+        errorCardClassName="h-96"
+      >
         <TableContainer
           placeholderText="No operations to confirm"
           isEmpty={!data?.data.length}
