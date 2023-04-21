@@ -3,7 +3,7 @@ import { HYDRATE } from "next-redux-wrapper";
 import { RootState } from "store/store";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:1337/api/",
+  baseUrl: process.env.NEXT_PUBLIC_API_URL,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
